@@ -18,6 +18,7 @@ const navLinks = [
   { href: "/", label: "Home", icon: Globe },
   { href: "/visas", label: "Visas", icon: FileText },
   { href: "/points-calculator", label: "Points Calculator", icon: Calculator },
+  { href: "/document-checklist", label: "Document Checklist", icon: FileText },
   { href: "/pathways", label: "Pathways", icon: ArrowRightLeft },
   { href: "/faq", label: "FAQ", icon: HelpCircle },
 ];

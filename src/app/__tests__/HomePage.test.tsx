@@ -35,8 +35,7 @@ describe("HomePage", () => {
     render(<HomePage />);
     expect(screen.getByText("How It Works")).toBeInTheDocument();
     expect(screen.getByText("Check Eligibility")).toBeInTheDocument();
-    expect(screen.getByText("Understand Pathways")).toBeInTheDocument();
-    expect(screen.getByText("Plan Your Migration")).toBeInTheDocument();
+    expect(screen.getByText("Understand Pathways & Plan")).toBeInTheDocument();
   });
 
   it("renders the features section", () => {
