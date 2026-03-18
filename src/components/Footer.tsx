@@ -16,6 +16,7 @@ const footerSections = [
     title: "Tools",
     links: [
       { label: "Points Calculator", href: "/points-calculator" },
+      { label: "State Sponsorship", href: "/state-sponsorship" },
       { label: "Document Checklist", href: "/document-checklist" },
       { label: "Migration Pathways", href: "/pathways" },
       { label: "FAQ", href: "/faq" },
