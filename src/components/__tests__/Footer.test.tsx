@@ -20,6 +20,7 @@ describe("Footer", () => {
   it("renders tool links", () => {
     render(<Footer />);
     expect(screen.getByText("Points Calculator")).toBeInTheDocument();
+    expect(screen.getByText("State Sponsorship")).toBeInTheDocument();
     expect(screen.getByText("Migration Pathways")).toBeInTheDocument();
     expect(screen.getByText("FAQ")).toBeInTheDocument();
   });

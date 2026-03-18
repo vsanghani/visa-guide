@@ -43,7 +43,7 @@ describe("HomePage", () => {
     render(<HomePage />);
     expect(screen.getByText("Why Use AusVisa Guide?")).toBeInTheDocument();
     expect(screen.getByText("Accurate Points Calculator")).toBeInTheDocument();
-    expect(screen.getByText("Up-to-Date Information")).toBeInTheDocument();
+    expect(screen.getByText("State Sponsorship Matrix")).toBeInTheDocument();
   });
 
   it("renders the bottom CTA section", () => {

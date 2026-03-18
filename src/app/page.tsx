@@ -13,6 +13,7 @@ import {
   Clock,
   Target,
   Sparkles,
+  MapPin,
 } from "lucide-react";
 
 const visaCategories = [
@@ -84,10 +85,10 @@ const features = [
     icon: Calculator,
   },
   {
-    title: "Up-to-Date Information",
+    title: "State Sponsorship Matrix",
     description:
-      "Visa requirements and policies updated for the 2025-2026 Australian migration program.",
-    icon: Clock,
+      "Compare 190 and 491 visa nomination criteria across all Australian states and territories.",
+    icon: MapPin,
   },
   {
     title: "Pathway Guidance",
