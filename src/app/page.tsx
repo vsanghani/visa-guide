@@ -56,24 +56,24 @@ const steps = [
   },
   {
     number: "02",
+    title: "Prepare Documents",
+    description:
+      "Use our checklist generator to know exactly what evidence you need to gather.",
+    icon: FileText,
+  },
+  {
+    number: "03",
     title: "Explore Visa Options",
     description:
       "Compare different visa subclasses and find the best fit for your skills, experience, and goals.",
     icon: FileText,
   },
   {
-    number: "03",
-    title: "Understand Pathways",
-    description:
-      "Discover temporary-to-permanent pathways and state nomination opportunities.",
-    icon: ArrowRightLeft,
-  },
-  {
     number: "04",
-    title: "Plan Your Migration",
+    title: "Understand Pathways & Plan",
     description:
-      "Get detailed information about processing times, costs, and required documentation.",
-    icon: CheckCircle,
+      "Get detailed information about processing times, costs, and temporary-to-permanent pathways.",
+    icon: ArrowRightLeft,
   },
 ];
 
@@ -89,6 +89,11 @@ const features = [
     description:
       "Compare 190 and 491 visa nomination criteria across all Australian states and territories.",
     icon: MapPin,
+  },
+  {
+    title: "Document Checklist",
+    description: "Generate a tailored list of documents required for your specific visa and personal circumstances.",
+    icon: FileText,
   },
   {
     title: "Pathway Guidance",
