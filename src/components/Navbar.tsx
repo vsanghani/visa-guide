@@ -21,6 +21,7 @@ const navLinks = [
   { href: "/points-calculator", label: "Points Calculator", icon: Calculator },
   { href: "/state-sponsorship", label: "State Sponsorship", icon: MapPin },
   { href: "/document-checklist", label: "Document Checklist", icon: FileText },
+  { href: "/regional-postcode", label: "Regional Postcode", icon: MapPin },
   { href: "/pathways", label: "Pathways", icon: ArrowRightLeft },
   { href: "/faq", label: "FAQ", icon: HelpCircle },
 ];

@@ -18,6 +18,7 @@ const footerSections = [
       { label: "Points Calculator", href: "/points-calculator" },
       { label: "State Sponsorship", href: "/state-sponsorship" },
       { label: "Document Checklist", href: "/document-checklist" },
+      { label: "Regional Postcode", href: "/regional-postcode" },
       { label: "Migration Pathways", href: "/pathways" },
       { label: "FAQ", href: "/faq" },
     ],

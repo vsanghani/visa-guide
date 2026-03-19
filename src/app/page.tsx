@@ -96,6 +96,11 @@ const features = [
     icon: FileText,
   },
   {
+    title: "Regional Postcode Checker",
+    description: "Instantly check if an Australian postcode is in a Designated Regional Area for 491 visa eligibility.",
+    icon: MapPin,
+  },
+  {
     title: "Pathway Guidance",
     description:
       "Visual flowcharts showing common temporary-to-permanent migration pathways.",

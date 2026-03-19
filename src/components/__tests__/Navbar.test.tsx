@@ -16,6 +16,7 @@ describe("Navbar", () => {
     expect(screen.getByText("Visas")).toBeInTheDocument();
     expect(screen.getByText("Points Calculator")).toBeInTheDocument();
     expect(screen.getByText("State Sponsorship")).toBeInTheDocument();
+    expect(screen.getByText("Regional Postcode")).toBeInTheDocument();
     expect(screen.getByText("Pathways")).toBeInTheDocument();
     expect(screen.getByText("FAQ")).toBeInTheDocument();
   });
