@@ -1,7 +1,12 @@
 import { render, screen, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { describe, it, expect } from "vitest";
+import { describe, it, expect, vi } from "vitest";
 import PointsCalculatorPage from "@/app/points-calculator/page";
+
+// Mock the PDF generator so tests don't actually produce files
+vi.mock("@/lib/generatePointsPDF", () => ({
+  generatePointsPDF: vi.fn(),
+}));
 
 describe("PointsCalculatorPage", () => {
   it("renders the page heading", () => {
@@ -232,5 +237,32 @@ describe("PointsCalculatorPage", () => {
     expect(screen.getByText("Subclass 189")).toBeInTheDocument();
     expect(screen.getByText("Subclass 190")).toBeInTheDocument();
     expect(screen.getByText("Subclass 491")).toBeInTheDocument();
+  });
+
+  it("renders Download PDF button in results and calls generator on click", async () => {
+    const { generatePointsPDF } = await import("@/lib/generatePointsPDF");
+    const user = userEvent.setup();
+    render(<PointsCalculatorPage />);
+
+    // Navigate through all steps
+    await user.click(screen.getByText("25-32 years"));
+    for (let i = 0; i < 5; i++) {
+      await user.click(screen.getByText("Next"));
+    }
+    await user.click(screen.getByText("See Results"));
+
+    const pdfBtn = screen.getByText("Download PDF");
+    expect(pdfBtn).toBeInTheDocument();
+
+    await user.click(pdfBtn);
+    expect(generatePointsPDF).toHaveBeenCalledTimes(1);
+    expect(generatePointsPDF).toHaveBeenCalledWith(
+      expect.objectContaining({
+        totalPoints: expect.any(Number),
+        passMark: 65,
+        breakdown: expect.any(Array),
+        visaEligibility: expect.any(Array),
+      })
+    );
   });
 });

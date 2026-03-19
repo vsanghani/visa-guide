@@ -3,6 +3,7 @@
 import { useState, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import StepIndicator from "@/components/ui/StepIndicator";
+import { generatePointsPDF } from "@/lib/generatePointsPDF";
 import {
   Calculator,
   ChevronLeft,
@@ -11,6 +12,7 @@ import {
   CheckCircle,
   XCircle,
   RotateCcw,
+  Download,
 } from "lucide-react";
 
 const PASS_MARK = 65;
@@ -466,13 +468,44 @@ export default function PointsCalculatorPage() {
         </div>
 
         {/* Actions */}
-        <button
-          onClick={reset}
-          className="glass-button-outline px-6 py-3 text-sm inline-flex items-center gap-2"
-        >
-          <RotateCcw className="w-4 h-4" />
-          Start Over
-        </button>
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
+          <button
+            onClick={() => {
+              const visaEligibility = [
+                { visa: "189", label: "Skilled Independent", min: 65, typical: 80 },
+                { visa: "190", label: "Skilled Nominated (+5)", min: 65, typical: 70 },
+                { visa: "491", label: "Skilled Regional (+15)", min: 65, typical: 65 },
+              ].map((v) => ({
+                visa: v.visa,
+                label: v.label,
+                status:
+                  totalPoints >= v.typical
+                    ? "✓ Competitive"
+                    : totalPoints >= v.min
+                      ? "⚠ Eligible but low"
+                      : "✗ Below minimum",
+                typical: v.typical,
+              }));
+              generatePointsPDF({
+                totalPoints,
+                passMark: PASS_MARK,
+                breakdown,
+                visaEligibility,
+              });
+            }}
+            className="glass-button px-6 py-3 text-sm inline-flex items-center gap-2"
+          >
+            <Download className="w-4 h-4" />
+            Download PDF
+          </button>
+          <button
+            onClick={reset}
+            className="glass-button-outline px-6 py-3 text-sm inline-flex items-center gap-2"
+          >
+            <RotateCcw className="w-4 h-4" />
+            Start Over
+          </button>
+        </div>
       </motion.div>
     );
   };
