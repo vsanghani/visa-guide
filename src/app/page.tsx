@@ -14,6 +14,7 @@ import {
   Target,
   Sparkles,
   MapPin,
+  Newspaper,
 } from "lucide-react";
 
 const visaCategories = [
@@ -111,6 +112,12 @@ const features = [
     description:
       "Answers to the most common questions about Australian skilled migration and visa processing.",
     icon: Sparkles,
+  },
+  {
+    title: "Latest News & Updates",
+    description:
+      "Stay informed with the latest immigration policy changes, invitation rounds, and state nomination news.",
+    icon: Newspaper,
   },
 ];
 
