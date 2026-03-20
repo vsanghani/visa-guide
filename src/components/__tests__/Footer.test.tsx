@@ -22,6 +22,7 @@ describe("Footer", () => {
     expect(screen.getByText("Points Calculator")).toBeInTheDocument();
     expect(screen.getByText("State Sponsorship")).toBeInTheDocument();
     expect(screen.getByText("Regional Postcode")).toBeInTheDocument();
+    expect(screen.getByText("News & Updates")).toBeInTheDocument();
     expect(screen.getByText("Migration Pathways")).toBeInTheDocument();
     expect(screen.getByText("FAQ")).toBeInTheDocument();
   });

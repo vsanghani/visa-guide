@@ -19,6 +19,7 @@ const footerSections = [
       { label: "State Sponsorship", href: "/state-sponsorship" },
       { label: "Document Checklist", href: "/document-checklist" },
       { label: "Regional Postcode", href: "/regional-postcode" },
+      { label: "News & Updates", href: "/news" },
       { label: "Migration Pathways", href: "/pathways" },
       { label: "FAQ", href: "/faq" },
     ],

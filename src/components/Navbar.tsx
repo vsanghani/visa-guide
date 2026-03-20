@@ -13,6 +13,7 @@ import {
   ArrowRightLeft,
   MapPin,
   HelpCircle,
+  Newspaper,
 } from "lucide-react";
 
 const navLinks = [
@@ -22,6 +23,7 @@ const navLinks = [
   { href: "/state-sponsorship", label: "State Sponsorship", icon: MapPin },
   { href: "/document-checklist", label: "Document Checklist", icon: FileText },
   { href: "/regional-postcode", label: "Regional Postcode", icon: MapPin },
+  { href: "/news", label: "News", icon: Newspaper },
   { href: "/pathways", label: "Pathways", icon: ArrowRightLeft },
   { href: "/faq", label: "FAQ", icon: HelpCircle },
 ];
