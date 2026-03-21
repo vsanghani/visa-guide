@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import PageHeader from "@/components/ui/PageHeader";
 import {
   MapPin,
   Search,
@@ -60,26 +61,18 @@ export default function RegionalPostcodePage() {
   return (
     <div className="pt-24 pb-16 lg:pt-32 min-h-screen">
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
+        <PageHeader
+          icon={MapPin}
+          iconWrapperClassName="w-14 h-14 rounded-2xl bg-gradient-to-br from-emerald-500 to-teal-500 flex items-center justify-center mx-auto mb-5 shadow-lg shadow-emerald-500/20"
+          title={
+            <>
+              Regional Postcode <span className="text-gradient">Checker</span>
+            </>
+          }
+          description='Instantly check if an Australian postcode is classified as a "Designated Regional Area" for migration purposes.'
+          descriptionClassName="text-white/50 max-w-xl mx-auto"
           className="text-center mb-12"
-        >
-          <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-emerald-500 to-teal-500 flex items-center justify-center mx-auto mb-5 shadow-lg shadow-emerald-500/20">
-            <MapPin className="w-7 h-7 text-white" />
-          </div>
-          <h1
-            className="text-3xl sm:text-4xl font-extrabold text-white mb-3"
-            style={{ fontFamily: "var(--font-display)" }}
-          >
-            Regional Postcode <span className="text-gradient">Checker</span>
-          </h1>
-          <p className="text-white/50 max-w-xl mx-auto">
-            Instantly check if an Australian postcode is classified as a
-            &ldquo;Designated Regional Area&rdquo; for migration purposes.
-          </p>
-        </motion.div>
+        />
 
         {/* Search Card */}
         <motion.div

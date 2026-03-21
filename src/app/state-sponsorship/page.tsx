@@ -11,11 +11,13 @@ import {
   Award,
   ChevronRight,
   Info,
+  type LucideIcon,
 } from "lucide-react";
+import PageHeader from "@/components/ui/PageHeader";
 
 type PathwayCriteria = {
   title: string;
-  icon: any;
+  icon: LucideIcon;
   details: string[];
 };
 
@@ -315,25 +317,20 @@ export default function StateSponsorshipPage() {
   return (
     <div className="pt-24 pb-16 lg:pt-32 min-h-screen">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
+        <PageHeader
+          icon={MapPin}
+          iconWrapperClassName="w-14 h-14 rounded-2xl bg-gradient-to-br from-indigo-500 to-purple-500 flex items-center justify-center mx-auto mb-5 shadow-lg shadow-indigo-500/20"
+          title={
+            <>
+              State Sponsorship{" "}
+              <span className="text-gradient">Criteria Matrix</span>
+            </>
+          }
+          description="Compare specific nomination requirements across Australian states for Subclass 190 and 491 visas. State criteria vary significantly and change often."
+          headingClassName="text-3xl sm:text-4xl font-extrabold text-white mb-4"
+          descriptionClassName="text-white/60 max-w-2xl mx-auto text-lg leading-relaxed"
           className="text-center mb-12"
-        >
-          <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-indigo-500 to-purple-500 flex items-center justify-center mx-auto mb-5 shadow-lg shadow-indigo-500/20">
-            <MapPin className="w-7 h-7 text-white" />
-          </div>
-          <h1
-            className="text-3xl sm:text-4xl font-extrabold text-white mb-4"
-            style={{ fontFamily: "var(--font-display)" }}
-          >
-            State Sponsorship <span className="text-gradient">Criteria Matrix</span>
-          </h1>
-          <p className="text-white/60 max-w-2xl mx-auto text-lg leading-relaxed">
-            Compare specific nomination requirements across Australian states for Subclass 190 and 491 visas. 
-            State criteria vary significantly and change often.
-          </p>
-        </motion.div>
+        />
 
         <div className="flex flex-col lg:flex-row gap-8">
           {/* Sidebar / State Selector */}

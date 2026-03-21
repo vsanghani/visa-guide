@@ -3,7 +3,12 @@
 import { useState, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import StepIndicator from "@/components/ui/StepIndicator";
+import PageHeader from "@/components/ui/PageHeader";
 import { generatePointsPDF } from "@/lib/generatePointsPDF";
+import {
+  getVisaEligibilityForPdf,
+  SKILLED_VISA_THRESHOLDS,
+} from "@/lib/skilledVisaThresholds";
 import {
   Calculator,
   ChevronLeft,
@@ -161,21 +166,61 @@ export default function PointsCalculatorPage() {
   });
   const [showResults, setShowResults] = useState(false);
 
-  const totalPoints = useMemo(() => {
-    let total = 0;
-    if (selections.age >= 0) total += ageOptions[selections.age].points;
-    if (selections.english >= 0) total += englishOptions[selections.english].points;
-    if (selections.overseasWork >= 0) total += overseasWorkOptions[selections.overseasWork].points;
-    if (selections.australianWork >= 0) total += australianWorkOptions[selections.australianWork].points;
-    if (selections.education >= 0) total += educationOptions[selections.education].points;
-    if (selections.specialist >= 0) total += specialistOptions[selections.specialist].points;
-    if (selections.australianStudy >= 0) total += australianStudyOptions[selections.australianStudy].points;
-    if (selections.partnerSkills >= 0) total += partnerSkillsOptions[selections.partnerSkills].points;
-    if (selections.communityLanguage >= 0) total += communityLanguageOptions[selections.communityLanguage].points;
-    if (selections.professionalYear >= 0) total += professionalYearOptions[selections.professionalYear].points;
-    if (selections.nomination >= 0) total += nominationOptions[selections.nomination].points;
-    return total;
+  const breakdown = useMemo(() => {
+    const items: { label: string; points: number }[] = [];
+    if (selections.age >= 0)
+      items.push({ label: "Age", points: ageOptions[selections.age].points });
+    if (selections.english >= 0)
+      items.push({ label: "English", points: englishOptions[selections.english].points });
+    if (selections.overseasWork >= 0)
+      items.push({
+        label: "Overseas Work",
+        points: overseasWorkOptions[selections.overseasWork].points,
+      });
+    if (selections.australianWork >= 0)
+      items.push({
+        label: "Australian Work",
+        points: australianWorkOptions[selections.australianWork].points,
+      });
+    if (selections.education >= 0)
+      items.push({ label: "Education", points: educationOptions[selections.education].points });
+    if (selections.specialist >= 0)
+      items.push({
+        label: "Specialist Education",
+        points: specialistOptions[selections.specialist].points,
+      });
+    if (selections.australianStudy >= 0)
+      items.push({
+        label: "Australian Study",
+        points: australianStudyOptions[selections.australianStudy].points,
+      });
+    if (selections.partnerSkills >= 0)
+      items.push({
+        label: "Partner Skills",
+        points: partnerSkillsOptions[selections.partnerSkills].points,
+      });
+    if (selections.communityLanguage >= 0)
+      items.push({
+        label: "Community Language",
+        points: communityLanguageOptions[selections.communityLanguage].points,
+      });
+    if (selections.professionalYear >= 0)
+      items.push({
+        label: "Professional Year",
+        points: professionalYearOptions[selections.professionalYear].points,
+      });
+    if (selections.nomination >= 0)
+      items.push({
+        label: "Nomination",
+        points: nominationOptions[selections.nomination].points,
+      });
+    return items;
   }, [selections]);
+
+  const totalPoints = useMemo(
+    () => breakdown.reduce((sum, row) => sum + row.points, 0),
+    [breakdown]
+  );
 
   const handleSelect = (key: string, index: number) => {
     setSelections((prev) => ({ ...prev, [key]: index }));
@@ -330,25 +375,8 @@ export default function PointsCalculatorPage() {
     );
   };
 
-  const getBreakdown = () => {
-    const items = [];
-    if (selections.age >= 0) items.push({ label: "Age", points: ageOptions[selections.age].points });
-    if (selections.english >= 0) items.push({ label: "English", points: englishOptions[selections.english].points });
-    if (selections.overseasWork >= 0) items.push({ label: "Overseas Work", points: overseasWorkOptions[selections.overseasWork].points });
-    if (selections.australianWork >= 0) items.push({ label: "Australian Work", points: australianWorkOptions[selections.australianWork].points });
-    if (selections.education >= 0) items.push({ label: "Education", points: educationOptions[selections.education].points });
-    if (selections.specialist >= 0) items.push({ label: "Specialist Education", points: specialistOptions[selections.specialist].points });
-    if (selections.australianStudy >= 0) items.push({ label: "Australian Study", points: australianStudyOptions[selections.australianStudy].points });
-    if (selections.partnerSkills >= 0) items.push({ label: "Partner Skills", points: partnerSkillsOptions[selections.partnerSkills].points });
-    if (selections.communityLanguage >= 0) items.push({ label: "Community Language", points: communityLanguageOptions[selections.communityLanguage].points });
-    if (selections.professionalYear >= 0) items.push({ label: "Professional Year", points: professionalYearOptions[selections.professionalYear].points });
-    if (selections.nomination >= 0) items.push({ label: "Nomination", points: nominationOptions[selections.nomination].points });
-    return items;
-  };
-
   const renderResults = () => {
     const passed = totalPoints >= PASS_MARK;
-    const breakdown = getBreakdown();
 
     return (
       <motion.div
@@ -396,11 +424,7 @@ export default function PointsCalculatorPage() {
 
         {/* Eligibility per visa */}
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
-          {[
-            { visa: "189", label: "Skilled Independent", min: 65, typical: 80 },
-            { visa: "190", label: "Skilled Nominated (+5)", min: 65, typical: 70 },
-            { visa: "491", label: "Skilled Regional (+15)", min: 65, typical: 65 },
-          ].map((visa) => {
+          {SKILLED_VISA_THRESHOLDS.map((visa) => {
             const eligible = totalPoints >= visa.min;
             const competitive = totalPoints >= visa.typical;
             return (
@@ -471,26 +495,11 @@ export default function PointsCalculatorPage() {
         <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
           <button
             onClick={() => {
-              const visaEligibility = [
-                { visa: "189", label: "Skilled Independent", min: 65, typical: 80 },
-                { visa: "190", label: "Skilled Nominated (+5)", min: 65, typical: 70 },
-                { visa: "491", label: "Skilled Regional (+15)", min: 65, typical: 65 },
-              ].map((v) => ({
-                visa: v.visa,
-                label: v.label,
-                status:
-                  totalPoints >= v.typical
-                    ? "✓ Competitive"
-                    : totalPoints >= v.min
-                      ? "⚠ Eligible but low"
-                      : "✗ Below minimum",
-                typical: v.typical,
-              }));
               generatePointsPDF({
                 totalPoints,
                 passMark: PASS_MARK,
                 breakdown,
-                visaEligibility,
+                visaEligibility: getVisaEligibilityForPdf(totalPoints),
               });
             }}
             className="glass-button px-6 py-3 text-sm inline-flex items-center gap-2"
@@ -513,26 +522,16 @@ export default function PointsCalculatorPage() {
   return (
     <div className="pt-24 pb-16 lg:pt-32">
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="text-center mb-10"
-        >
-          <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-navy-400 to-teal-400 flex items-center justify-center mx-auto mb-5">
-            <Calculator className="w-7 h-7 text-white" />
-          </div>
-          <h1
-            className="text-3xl sm:text-4xl font-extrabold text-white mb-3"
-            style={{ fontFamily: "var(--font-display)" }}
-          >
-            Points <span className="text-gradient">Calculator</span>
-          </h1>
-          <p className="text-white/50 max-w-xl mx-auto">
-            Calculate your SkillSelect points score for Australian skilled
-            migration visas (subclass 189, 190, 491).
-          </p>
-        </motion.div>
+        <PageHeader
+          icon={Calculator}
+          title={
+            <>
+              Points <span className="text-gradient">Calculator</span>
+            </>
+          }
+          description="Calculate your SkillSelect points score for Australian skilled migration visas (subclass 189, 190, 491)."
+          descriptionClassName="text-white/50 max-w-xl mx-auto"
+        />
 
         {/* Points badge */}
         {!showResults && (

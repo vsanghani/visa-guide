@@ -12,7 +12,7 @@ import {
   AlertCircle,
 } from "lucide-react";
 
-interface VisaDetailLayoutProps {
+export interface VisaDetailLayoutProps {
   subclass: string;
   title: string;
   category: string;

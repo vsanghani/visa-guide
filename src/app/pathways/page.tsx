@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import GlassCard from "@/components/ui/GlassCard";
+import PageHeader from "@/components/ui/PageHeader";
 import Link from "next/link";
 import {
   ArrowRight,
@@ -114,23 +115,17 @@ export default function PathwaysPage() {
   return (
     <div className="pt-24 pb-16 lg:pt-32">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
+        <PageHeader
+          title={
+            <>
+              Migration <span className="text-gradient">Pathways</span>
+            </>
+          }
+          description="Explore common temporary-to-permanent pathways for migrating to Australia. Find the route that best matches your situation."
+          headingClassName="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white mb-4"
+          descriptionClassName="text-white/50 max-w-2xl mx-auto text-lg"
           className="text-center mb-12"
-        >
-          <h1
-            className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white mb-4"
-            style={{ fontFamily: "var(--font-display)" }}
-          >
-            Migration <span className="text-gradient">Pathways</span>
-          </h1>
-          <p className="text-white/50 max-w-2xl mx-auto text-lg">
-            Explore common temporary-to-permanent pathways for migrating to
-            Australia. Find the route that best matches your situation.
-          </p>
-        </motion.div>
+        />
 
         {/* Pathways */}
         <div className="space-y-8">

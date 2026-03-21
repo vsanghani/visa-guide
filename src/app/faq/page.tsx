@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import Accordion from "@/components/ui/Accordion";
+import PageHeader from "@/components/ui/PageHeader";
 import { HelpCircle } from "lucide-react";
 
 const categories = [
@@ -106,26 +107,17 @@ export default function FAQPage() {
   return (
     <div className="pt-24 pb-16 lg:pt-32">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="text-center mb-10"
-        >
-          <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-navy-400 to-teal-400 flex items-center justify-center mx-auto mb-5">
-            <HelpCircle className="w-7 h-7 text-white" />
-          </div>
-          <h1
-            className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white mb-4"
-            style={{ fontFamily: "var(--font-display)" }}
-          >
-            Frequently Asked <span className="text-gradient">Questions</span>
-          </h1>
-          <p className="text-white/50 max-w-2xl mx-auto">
-            Common questions about Australian skilled migration, points test,
-            employer sponsorship, and visa processing.
-          </p>
-        </motion.div>
+        <PageHeader
+          icon={HelpCircle}
+          title={
+            <>
+              Frequently Asked <span className="text-gradient">Questions</span>
+            </>
+          }
+          description="Common questions about Australian skilled migration, points test, employer sponsorship, and visa processing."
+          headingClassName="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white mb-4"
+          descriptionClassName="text-white/50 max-w-2xl mx-auto"
+        />
 
         {/* Category tabs */}
         <motion.div

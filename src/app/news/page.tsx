@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import PageHeader from "@/components/ui/PageHeader";
 import {
   Newspaper,
   Clock,
@@ -30,26 +31,18 @@ export default function NewsPage() {
   return (
     <div className="pt-24 pb-16 lg:pt-32 min-h-screen">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
+        <PageHeader
+          icon={Newspaper}
+          iconWrapperClassName="w-14 h-14 rounded-2xl bg-gradient-to-br from-rose-500 to-orange-500 flex items-center justify-center mx-auto mb-5 shadow-lg shadow-rose-500/20"
+          title={
+            <>
+              Latest <span className="text-gradient">News</span>
+            </>
+          }
+          description="Stay up to date with the latest Australian immigration policy changes, invitation rounds, and state nomination updates."
+          descriptionClassName="text-white/50 max-w-xl mx-auto"
           className="text-center mb-12"
-        >
-          <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-rose-500 to-orange-500 flex items-center justify-center mx-auto mb-5 shadow-lg shadow-rose-500/20">
-            <Newspaper className="w-7 h-7 text-white" />
-          </div>
-          <h1
-            className="text-3xl sm:text-4xl font-extrabold text-white mb-3"
-            style={{ fontFamily: "var(--font-display)" }}
-          >
-            Latest <span className="text-gradient">News</span>
-          </h1>
-          <p className="text-white/50 max-w-xl mx-auto">
-            Stay up to date with the latest Australian immigration policy
-            changes, invitation rounds, and state nomination updates.
-          </p>
-        </motion.div>
+        />
 
         {/* Category Filter */}
         <motion.div
