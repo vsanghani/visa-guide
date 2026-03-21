@@ -1,7 +1,7 @@
 "use client";
 
-import { motion } from "framer-motion";
 import VisaCard from "@/components/visas/VisaCard";
+import PageHeader from "@/components/ui/PageHeader";
 import {
   Target,
   MapPin,
@@ -102,22 +102,17 @@ export default function VisasPage() {
   return (
     <div className="pt-24 pb-16 lg:pt-32">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
+        <PageHeader
+          title={
+            <>
+              Australian Visa <span className="text-gradient">Subclasses</span>
+            </>
+          }
+          description="Explore the most popular visa pathways for skilled migration and employer-sponsored visas to Australia."
+          headingClassName="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white mb-4"
+          descriptionClassName="text-white/50 max-w-2xl mx-auto text-lg"
           className="text-center mb-12"
-        >
-          <h1
-            className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white mb-4"
-            style={{ fontFamily: "var(--font-display)" }}
-          >
-            Australian Visa <span className="text-gradient">Subclasses</span>
-          </h1>
-          <p className="text-white/50 max-w-2xl mx-auto text-lg">
-            Explore the most popular visa pathways for skilled migration and
-            employer-sponsored visas to Australia.
-          </p>
-        </motion.div>
+        />
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {visas.map((visa) => (

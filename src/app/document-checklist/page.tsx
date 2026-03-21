@@ -3,6 +3,7 @@
 import { useState, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import StepIndicator from "@/components/ui/StepIndicator";
+import PageHeader from "@/components/ui/PageHeader";
 import {
   FileText,
   ChevronLeft,
@@ -390,45 +391,20 @@ export default function DocumentChecklistPage() {
 
   return (
     <div className="pt-24 pb-16 lg:pt-32 min-h-screen">
-      {/* Hide header and background in print mode */}
-      <style dangerouslySetInnerHTML={{__html: `
-        @media print {
-          body { background: white !important; color: black !important; }
-          .mesh-gradient { display: none !important; }
-          nav, footer { display: none !important; }
-          .glass-card { background: none !important; border: none !important; box-shadow: none !important; backdrop-filter: none !important; padding: 0 !important; }
-          .print\\:hidden { display: none !important; }
-          .print\\:text-black { color: black !important; }
-          .print\\:border-gray-300 { border-color: #d1d5db !important; }
-          .print\\:border-gray-400 { border-color: #9ca3af !important; }
-          .print\\:bg-transparent { background-color: transparent !important; }
-          .print\\:shadow-none { box-shadow: none !important; }
-          h2, h3 { color: black !important; border-bottom-color: black !important; margin-bottom: 12px !important; }
-          h3 > div { background-color: transparent !important; color: black !important; border: 1px solid black !important; }
-          .pt-24 { padding-top: 0 !important; }
-        }
-      `}} />
-
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
         {!showResults && (
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="text-center mb-10 print:hidden"
-          >
-            <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-navy-400 to-teal-400 flex items-center justify-center mx-auto mb-5">
-              <FileText className="w-7 h-7 text-white" />
-            </div>
-            <h1
-              className="text-3xl sm:text-4xl font-extrabold text-white mb-3"
-              style={{ fontFamily: "var(--font-display)" }}
-            >
-              Document <span className="text-gradient">Checklist</span>
-            </h1>
-            <p className="text-white/50 max-w-xl mx-auto">
-              Generate a personalized checklist of documents required for your Australian visa application.
-            </p>
-          </motion.div>
+          <div className="print:hidden">
+            <PageHeader
+              icon={FileText}
+              title={
+                <>
+                  Document <span className="text-gradient">Checklist</span>
+                </>
+              }
+              description="Generate a personalized checklist of documents required for your Australian visa application."
+              descriptionClassName="text-white/50 max-w-xl mx-auto"
+            />
+          </div>
         )}
 
         {!showResults && (
