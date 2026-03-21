@@ -268,7 +268,7 @@ export default function PointsCalculatorPage() {
   ) => (
     <div className="mb-6">
       {title && (
-        <h4 className="text-sm font-medium text-white/70 mb-3">{title}</h4>
+        <h4 className="text-sm font-medium text-primary/70 mb-3">{title}</h4>
       )}
       <div className="space-y-2">
         {options.map((option, i) => (
@@ -277,16 +277,16 @@ export default function PointsCalculatorPage() {
             onClick={() => handleSelect(key, i)}
             className={`w-full text-left px-4 py-3.5 rounded-xl border transition-all duration-300 flex items-center justify-between ${
               selectedIndex === i
-                ? "bg-teal-500/15 border-teal-400/30 text-white"
-                : "bg-white/3 border-white/8 text-white/60 hover:bg-white/5 hover:border-white/15"
+                ? "bg-surface-container-high border-[rgba(0,30,64,0.12)] text-primary"
+                : "bg-surface-container-low border-[rgba(195,198,209,0.25)] text-primary/65 hover:bg-surface-container-high"
             }`}
           >
             <span className="text-sm">{option.label}</span>
             <span
               className={`text-xs font-bold px-2.5 py-1 rounded-lg ${
                 selectedIndex === i
-                  ? "bg-teal-400/20 text-teal-300"
-                  : "bg-white/5 text-white/40"
+                  ? "bg-secondary/15 text-secondary"
+                  : "bg-surface-container-low text-primary/50"
               }`}
             >
               {option.points > 0 ? `+${option.points}` : "0"} pts
@@ -308,12 +308,12 @@ export default function PointsCalculatorPage() {
         transition={{ duration: 0.3 }}
       >
         <h2
-          className="text-xl sm:text-2xl font-bold text-white mb-2"
+          className="text-xl sm:text-2xl font-bold text-primary mb-2"
           style={{ fontFamily: "var(--font-display)" }}
         >
           {config.title}
         </h2>
-        <p className="text-sm text-white/50 mb-6">{config.description}</p>
+        <p className="text-sm text-primary/60 mb-6">{config.description}</p>
 
         {/* Step-specific rendering */}
         {config.key === "work" && (
@@ -390,17 +390,17 @@ export default function PointsCalculatorPage() {
           <div
             className={`w-36 h-36 rounded-full mx-auto flex flex-col items-center justify-center border-4 ${
               passed
-                ? "border-teal-400/50 bg-teal-400/10"
-                : "border-rose-400/50 bg-rose-400/10"
+                ? "border-secondary/45 bg-secondary/10"
+                : "border-rose-500/40 bg-rose-500/10"
             }`}
           >
             <span
-              className="text-4xl font-extrabold text-white"
+              className="text-4xl font-extrabold text-primary"
               style={{ fontFamily: "var(--font-display)" }}
             >
               {totalPoints}
             </span>
-            <span className="text-xs text-white/50">points</span>
+            <span className="text-xs text-primary/60">points</span>
           </div>
         </div>
 
@@ -408,8 +408,8 @@ export default function PointsCalculatorPage() {
         <div
           className={`inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold mb-6 ${
             passed
-              ? "bg-teal-400/15 text-teal-300 border border-teal-400/20"
-              : "bg-rose-400/15 text-rose-300 border border-rose-400/20"
+              ? "bg-secondary/12 text-secondary border border-secondary/25"
+              : "bg-rose-500/15 text-rose-700 border border-rose-500/25"
           }`}
         >
           {passed ? (
@@ -429,16 +429,16 @@ export default function PointsCalculatorPage() {
             const competitive = totalPoints >= visa.typical;
             return (
               <div key={visa.visa} className="glass-card p-4">
-                <span className="text-xs text-teal-400 font-medium mb-1 block">
+                <span className="text-xs text-secondary font-medium mb-1 block uppercase tracking-wide">
                   Subclass {visa.visa}
                 </span>
-                <h4 className="text-sm font-bold text-white mb-2">
+                <h4 className="text-sm font-bold text-primary mb-2">
                   {visa.label}
                 </h4>
                 <div
                   className={`text-xs font-medium ${
                     competitive
-                      ? "text-teal-300"
+                      ? "text-secondary"
                       : eligible
                         ? "text-gold-400"
                         : "text-rose-400"
@@ -450,7 +450,7 @@ export default function PointsCalculatorPage() {
                       ? "⚠ Eligible but low"
                       : "✗ Below minimum"}
                 </div>
-                <p className="text-xs text-white/30 mt-1">
+                <p className="text-xs text-primary/45 mt-1">
                   Typical invite: {visa.typical}+ pts
                 </p>
               </div>
@@ -461,7 +461,7 @@ export default function PointsCalculatorPage() {
         {/* Breakdown */}
         <div className="glass-card p-6 text-left mb-6">
           <h3
-            className="text-base font-bold text-white mb-4"
+            className="text-base font-bold text-primary mb-4"
             style={{ fontFamily: "var(--font-display)" }}
           >
             Points Breakdown
@@ -470,12 +470,12 @@ export default function PointsCalculatorPage() {
             {breakdown.map((item) => (
               <div
                 key={item.label}
-                className="flex justify-between items-center py-2 border-b border-white/5"
+                className="flex justify-between items-center py-2 border-b border-[rgba(195,198,209,0.2)]"
               >
-                <span className="text-sm text-white/60">{item.label}</span>
+                <span className="text-sm text-primary/65">{item.label}</span>
                 <span
                   className={`text-sm font-bold ${
-                    item.points > 0 ? "text-teal-300" : "text-white/30"
+                    item.points > 0 ? "text-secondary" : "text-primary/45"
                   }`}
                 >
                   +{item.points}
@@ -483,7 +483,7 @@ export default function PointsCalculatorPage() {
               </div>
             ))}
             <div className="flex justify-between items-center pt-3">
-              <span className="text-sm font-bold text-white">Total</span>
+              <span className="text-sm font-bold text-primary">Total</span>
               <span className="text-lg font-bold text-gradient-teal">
                 {totalPoints} points
               </span>
@@ -520,7 +520,7 @@ export default function PointsCalculatorPage() {
   };
 
   return (
-    <div className="pt-24 pb-16 lg:pt-32">
+    <div className="pt-24 pb-16 lg:pt-32 bg-surface">
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
         <PageHeader
           icon={Calculator}
@@ -530,7 +530,7 @@ export default function PointsCalculatorPage() {
             </>
           }
           description="Calculate your SkillSelect points score for Australian skilled migration visas (subclass 189, 190, 491)."
-          descriptionClassName="text-white/50 max-w-xl mx-auto"
+          descriptionClassName="text-primary/60 max-w-xl mx-auto"
         />
 
         {/* Points badge */}
@@ -541,15 +541,15 @@ export default function PointsCalculatorPage() {
             className="flex justify-center mb-8"
           >
             <div className="glass-card px-6 py-3 flex items-center gap-3">
-              <Award className="w-5 h-5 text-teal-400" />
-              <span className="text-sm text-white/60">Current Score:</span>
+              <Award className="w-5 h-5 text-secondary" />
+              <span className="text-sm text-primary/65">Current Score:</span>
               <span
                 className="text-xl font-bold text-gradient-teal"
                 style={{ fontFamily: "var(--font-display)" }}
               >
                 {totalPoints}
               </span>
-              <span className="text-xs text-white/30">/ {PASS_MARK} min</span>
+              <span className="text-xs text-primary/45">/ {PASS_MARK} min</span>
             </div>
           </motion.div>
         )}
@@ -569,14 +569,14 @@ export default function PointsCalculatorPage() {
 
           {/* Navigation */}
           {!showResults && (
-            <div className="flex justify-between items-center mt-8 pt-6 border-t border-white/5">
+            <div className="flex justify-between items-center mt-8 pt-6 border-t border-[rgba(195,198,209,0.25)]">
               <button
                 onClick={prevStep}
                 disabled={currentStep === 0}
                 className={`flex items-center gap-2 text-sm font-medium px-4 py-2 rounded-xl transition-all ${
                   currentStep === 0
-                    ? "text-white/20 cursor-not-allowed"
-                    : "text-white/60 hover:text-white hover:bg-white/5"
+                    ? "text-primary/35 cursor-not-allowed"
+                    : "text-primary/65 hover:text-primary hover:bg-surface-container-low"
                 }`}
               >
                 <ChevronLeft className="w-4 h-4" />

@@ -100,7 +100,7 @@ const visas = [
 
 export default function VisasPage() {
   return (
-    <div className="pt-24 pb-16 lg:pt-32">
+    <div className="pt-24 pb-16 lg:pt-32 bg-surface">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <PageHeader
           title={
@@ -109,8 +109,8 @@ export default function VisasPage() {
             </>
           }
           description="Explore the most popular visa pathways for skilled migration and employer-sponsored visas to Australia."
-          headingClassName="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white mb-4"
-          descriptionClassName="text-white/50 max-w-2xl mx-auto text-lg"
+          headingClassName="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-primary mb-4 tracking-tight"
+          descriptionClassName="text-primary/65 max-w-2xl mx-auto text-lg leading-relaxed"
           className="text-center mb-12"
         />
 

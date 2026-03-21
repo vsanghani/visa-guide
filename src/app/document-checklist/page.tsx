@@ -237,7 +237,7 @@ export default function DocumentChecklistPage() {
   ) => (
     <div className="mb-6">
       {title && (
-        <h4 className="text-sm font-medium text-white/70 mb-3">{title}</h4>
+        <h4 className="text-sm font-medium text-primary/70 mb-3">{title}</h4>
       )}
       <div className={`grid gap-2 ${columns === 2 ? "grid-cols-1 sm:grid-cols-2" : "grid-cols-1"}`}>
         {options.map((option) => {
@@ -247,14 +247,14 @@ export default function DocumentChecklistPage() {
               key={option.id}
               data-testid={`${configKey}-${option.id}`}
               onClick={() => handleSelect(configKey, option.id)}
-              className={`text-left px-4 py-3.5 rounded-xl border transition-all duration-300 flex items-center justify-between ${
+              className={`text-left px-4 py-3.5 rounded-xl transition-all duration-300 flex items-center justify-between border ${
                 isSelected
-                  ? "bg-teal-500/15 border-teal-400/30 text-white"
-                  : "bg-white/3 border-white/8 text-white/60 hover:bg-white/5 hover:border-white/15"
+                  ? "bg-surface-container-high border-[rgba(0,30,64,0.12)] text-primary shadow-[var(--shadow-ambient)]"
+                  : "bg-surface-container-low border-[rgba(195,198,209,0.2)] text-primary/65 hover:bg-surface-container-high"
               }`}
             >
               <span className="text-sm">{option.label}</span>
-              {isSelected && <CheckCircle className="w-4 h-4 text-teal-400" />}
+              {isSelected && <CheckCircle className="w-4 h-4 text-secondary" />}
             </button>
           );
         })}
@@ -273,20 +273,20 @@ export default function DocumentChecklistPage() {
       >
         {currentStep === 0 && (
           <>
-            <h2 className="text-xl sm:text-2xl font-bold text-white mb-2" style={{ fontFamily: "var(--font-display)" }}>
+            <h2 className="text-xl sm:text-2xl font-bold text-primary mb-2" style={{ fontFamily: "var(--font-display)" }}>
               Which visa are you applying for?
             </h2>
-            <p className="text-sm text-white/50 mb-6">Select the main visa subclass to generate specific requirements.</p>
+            <p className="text-sm text-primary/60 mb-6">Select the main visa subclass to generate specific requirements.</p>
             {renderOptionGroup("", visaOptions, "visaSubclass")}
           </>
         )}
 
         {currentStep === 1 && (
           <>
-             <h2 className="text-xl sm:text-2xl font-bold text-white mb-2" style={{ fontFamily: "var(--font-display)" }}>
+             <h2 className="text-xl sm:text-2xl font-bold text-primary mb-2" style={{ fontFamily: "var(--font-display)" }}>
               Personal Circumstances
             </h2>
-            <p className="text-sm text-white/50 mb-6">Tell us about your relationship status and location.</p>
+            <p className="text-sm text-primary/60 mb-6">Tell us about your relationship status and location.</p>
             {renderOptionGroup("Are you currently inside Australia?", booleanOptions, "onshore", 2)}
             {renderOptionGroup("What is your relationship status?", maritalOptions, "maritalStatus")}
             
@@ -299,10 +299,10 @@ export default function DocumentChecklistPage() {
 
         {currentStep === 2 && (
           <>
-             <h2 className="text-xl sm:text-2xl font-bold text-white mb-2" style={{ fontFamily: "var(--font-display)" }}>
+             <h2 className="text-xl sm:text-2xl font-bold text-primary mb-2" style={{ fontFamily: "var(--font-display)" }}>
               Work & Study History
             </h2>
-            <p className="text-sm text-white/50 mb-6">This determines the evidence needed for your claims.</p>
+            <p className="text-sm text-primary/60 mb-6">This determines the evidence needed for your claims.</p>
             
             {["189", "190", "491"].includes(selections.visaSubclass) ? (
                renderOptionGroup("Are you claiming points for work experience?", booleanOptions, "claimingWorkExp", 2)
@@ -328,10 +328,10 @@ export default function DocumentChecklistPage() {
       >
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 pb-6 border-b border-white/10">
           <div>
-            <h2 className="text-2xl font-bold text-white mb-1" style={{ fontFamily: "var(--font-display)" }}>
+            <h2 className="text-2xl font-bold text-primary mb-1" style={{ fontFamily: "var(--font-display)" }}>
               Your Custom Document Checklist
             </h2>
-            <p className="text-sm text-white/60">
+            <p className="text-sm text-primary/65">
               For Subclass {selections.visaSubclass}
               {selections.onshore === "yes" ? " (Onshore)" : " (Offshore)"}
             </p>
@@ -348,20 +348,20 @@ export default function DocumentChecklistPage() {
         <div className="space-y-8 print:space-y-6">
           {checklist.map((category, idx) => (
             <div key={idx} className="print:break-inside-avoid">
-              <h3 className="text-lg font-bold text-teal-300 mb-4 flex items-center gap-2 border-b border-teal-500/20 pb-2">
-                <div className="w-6 h-6 rounded-full bg-teal-500/20 flex items-center justify-center text-xs text-teal-400">
+              <h3 className="text-lg font-bold text-primary mb-4 flex items-center gap-2 rounded-lg bg-surface-container-low px-3 py-2">
+                <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center text-xs text-secondary">
                   {idx + 1}
                 </div>
                 {category.title}
               </h3>
               <ul className="space-y-3">
                 {category.items.map((item, itemIdx) => (
-                  <li key={itemIdx} className="flex items-start gap-3 glass-card bg-white/5 p-3 rounded-lg print:border print:border-gray-300 print:shadow-none print:bg-transparent">
-                    <div className="mt-0.5 w-5 h-5 rounded border-2 border-white/20 flex-shrink-0 print:border-gray-400"></div>
+                  <li key={itemIdx} className="flex items-start gap-3 glass-card bg-surface-container-low p-3 rounded-lg print:border print:border-gray-300 print:shadow-none print:bg-transparent">
+                    <div className="mt-0.5 w-5 h-5 rounded border-2 border-primary/15 flex-shrink-0 print:border-gray-400"></div>
                     <div>
-                      <span className="text-sm font-medium text-white print:text-black">{item.text}</span>
+                      <span className="text-sm font-medium text-primary print:text-black">{item.text}</span>
                       {item.note && (
-                        <p className="text-xs text-white/50 mt-1 print:text-gray-600">{item.note}</p>
+                        <p className="text-xs text-primary/60 mt-1 print:text-gray-600">{item.note}</p>
                       )}
                     </div>
                   </li>
@@ -372,7 +372,7 @@ export default function DocumentChecklistPage() {
         </div>
 
         <div className="mt-8 pt-6 border-t border-white/10 print:hidden text-center">
-          <p className="text-xs text-white/40 mb-6">
+          <p className="text-xs text-primary/50 mb-6">
             Disclaimer: This checklist is generated for indicative purposes only based on your inputs. 
             The Department of Home Affairs may request additional documents. We recommend verifying with 
             official sources or a Registered Migration Agent.
@@ -390,7 +390,7 @@ export default function DocumentChecklistPage() {
   };
 
   return (
-    <div className="pt-24 pb-16 lg:pt-32 min-h-screen">
+    <div className="pt-24 pb-16 lg:pt-32 min-h-screen bg-surface">
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
         {!showResults && (
           <div className="print:hidden">
@@ -402,7 +402,7 @@ export default function DocumentChecklistPage() {
                 </>
               }
               description="Generate a personalized checklist of documents required for your Australian visa application."
-              descriptionClassName="text-white/50 max-w-xl mx-auto"
+              descriptionClassName="text-primary/60 max-w-xl mx-auto"
             />
           </div>
         )}
@@ -425,8 +425,8 @@ export default function DocumentChecklistPage() {
                 disabled={currentStep === 0}
                 className={`flex items-center gap-2 text-sm font-medium px-4 py-2 rounded-xl transition-all ${
                   currentStep === 0
-                    ? "text-white/20 cursor-not-allowed"
-                    : "text-white/60 hover:text-white hover:bg-white/5"
+                    ? "text-primary/35 cursor-not-allowed"
+                    : "text-primary/65 hover:text-primary hover:bg-white/5"
                 }`}
               >
                 <ChevronLeft className="w-4 h-4" />
@@ -437,8 +437,8 @@ export default function DocumentChecklistPage() {
                 disabled={!isCurrentStepValid()}
                 className={`px-6 py-2.5 text-sm flex items-center gap-2 rounded-xl font-semibold transition-all duration-300 ${
                   isCurrentStepValid() 
-                    ? "bg-gradient-to-r from-teal-400 to-teal-500 text-teal-950 shadow-[0_0_20px_rgba(45,212,191,0.3)] hover:shadow-[0_0_25px_rgba(45,212,191,0.5)] hover:scale-[1.02]"
-                    : "bg-white/10 text-white/30 cursor-not-allowed"
+                    ? "glass-button"
+                    : "bg-surface-container-high text-primary/45 cursor-not-allowed"
                 }`}
               >
                 {currentStep === steps.length - 1 ? "Generate Checklist" : "Next"}

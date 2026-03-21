@@ -22,7 +22,7 @@ export default function GlassCard({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-50px" }}
       transition={{ duration: 0.5, delay }}
-      className={`glass-card p-6 ${hover ? "" : "hover:transform-none hover:shadow-none"} ${className}`}
+      className={`glass-card p-6 ${hover ? "" : "glass-card-static"} ${className}`}
     >
       {children}
     </motion.div>

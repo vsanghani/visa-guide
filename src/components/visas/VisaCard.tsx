@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { ReactNode } from "react";
 import { LucideIcon } from "lucide-react";
 
 interface VisaCardProps {
@@ -39,28 +38,28 @@ export default function VisaCard({
       <div className="p-6">
         <div className="flex items-start justify-between mb-4">
           <div
-            className={`w-12 h-12 rounded-2xl bg-gradient-to-br ${color} flex items-center justify-center`}
+            className={`w-12 h-12 rounded-xl bg-gradient-to-br ${color} flex items-center justify-center shadow-[var(--shadow-ambient)]`}
           >
-            <Icon className="w-6 h-6 text-white" />
+            <Icon className="w-6 h-6 text-on-primary" />
           </div>
-          <span className="px-2.5 py-1 rounded-lg bg-white/5 text-xs font-medium text-white/50 border border-white/5">
+          <span className="px-2.5 py-1 rounded-full bg-surface-container-low text-xs font-medium text-primary/70 uppercase tracking-wide">
             {category}
           </span>
         </div>
 
         <div className="mb-4">
-          <span className="text-xs font-medium text-teal-400 mb-1 block">
+          <span className="text-xs font-medium text-secondary mb-1 block uppercase tracking-wide">
             Subclass {subclass}
           </span>
           <h3
-            className="text-lg font-bold text-white"
+            className="text-lg font-bold text-primary"
             style={{ fontFamily: "var(--font-display)" }}
           >
             {title}
           </h3>
         </div>
 
-        <p className="text-sm text-white/50 leading-relaxed mb-4">
+        <p className="text-sm text-primary/65 leading-relaxed mb-4">
           {description}
         </p>
 
@@ -68,23 +67,23 @@ export default function VisaCard({
           {features.map((feature) => (
             <li
               key={feature}
-              className="text-xs text-white/40 flex items-start gap-2"
+              className="text-xs text-primary/55 flex items-start gap-2"
             >
-              <span className="w-1 h-1 rounded-full bg-teal-400 mt-1.5 flex-shrink-0" />
+              <span className="w-1 h-1 rounded-full bg-secondary mt-1.5 flex-shrink-0" />
               {feature}
             </li>
           ))}
         </ul>
 
         {processingTime && (
-          <div className="text-xs text-white/30 mb-4">
+          <div className="text-xs text-primary/45 mb-4">
             Processing: {processingTime}
           </div>
         )}
 
         <Link
           href={href}
-          className="glass-button-outline w-full py-2.5 text-sm flex items-center justify-center gap-2 group-hover:border-teal-400/30 group-hover:text-teal-300"
+          className="glass-button-outline w-full py-2.5 text-sm flex items-center justify-center gap-2 group-hover:border-secondary/50 group-hover:text-secondary"
         >
           Learn More
         </Link>

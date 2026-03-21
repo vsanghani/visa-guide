@@ -327,8 +327,8 @@ export default function StateSponsorshipPage() {
             </>
           }
           description="Compare specific nomination requirements across Australian states for Subclass 190 and 491 visas. State criteria vary significantly and change often."
-          headingClassName="text-3xl sm:text-4xl font-extrabold text-white mb-4"
-          descriptionClassName="text-white/60 max-w-2xl mx-auto text-lg leading-relaxed"
+          headingClassName="text-3xl sm:text-4xl font-extrabold text-primary mb-4"
+          descriptionClassName="text-primary/65 max-w-2xl mx-auto text-lg leading-relaxed"
           className="text-center mb-12"
         />
 
@@ -340,7 +340,7 @@ export default function StateSponsorshipPage() {
             className="w-full lg:w-1/4 flex-shrink-0"
           >
             <div className="glass-card p-4 sticky top-28">
-              <h3 className="text-xs font-bold text-white/40 uppercase tracking-wider mb-4 px-2">Select a State</h3>
+              <h3 className="text-xs font-bold text-primary/50 uppercase tracking-wider mb-4 px-2">Select a State</h3>
               <div className="flex overflow-x-auto lg:flex-col gap-2 pb-2 lg:pb-0 scrollbar-hide">
                 {states.map((state) => (
                   <button
@@ -353,13 +353,13 @@ export default function StateSponsorshipPage() {
                     }`}
                   >
                     <div>
-                      <span className="block font-bold text-white text-lg">{state.id}</span>
-                      <span className="block text-xs text-white/50 group-hover:text-white/70 transition-colors hidden lg:block">
+                      <span className="block font-bold text-primary text-lg">{state.id}</span>
+                      <span className="block text-xs text-primary/60 group-hover:text-primary/70 transition-colors hidden lg:block">
                         {state.name}
                       </span>
                     </div>
                     {activeState === state.id && (
-                      <ChevronRight className="w-5 h-5 text-white/50 hidden lg:block" />
+                      <ChevronRight className="w-5 h-5 text-primary/60 hidden lg:block" />
                     )}
                   </button>
                 ))}
@@ -381,7 +381,7 @@ export default function StateSponsorshipPage() {
 
               <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end mb-8 border-b border-white/10 pb-6 relative z-10">
                 <div>
-                  <h2 className="text-3xl font-bold text-white mb-2 flex items-center gap-3" style={{ fontFamily: "var(--font-display)" }}>
+                  <h2 className="text-3xl font-bold text-primary mb-2 flex items-center gap-3" style={{ fontFamily: "var(--font-display)" }}>
                     {currentState.name}
                   </h2>
                   <a 
@@ -402,7 +402,7 @@ export default function StateSponsorshipPage() {
                   className={`flex-1 sm:w-40 px-6 py-2.5 rounded-xl text-sm font-semibold transition-all duration-300 ${
                     activeTab === "190"
                       ? "bg-white text-navy-900 shadow-lg"
-                      : "text-white/60 hover:text-white hover:bg-white/5"
+                      : "text-primary/65 hover:text-primary hover:bg-white/5"
                   }`}
                 >
                   Subclass 190
@@ -412,7 +412,7 @@ export default function StateSponsorshipPage() {
                   className={`flex-1 sm:w-40 px-6 py-2.5 rounded-xl text-sm font-semibold transition-all duration-300 ${
                     activeTab === "491"
                       ? "bg-gradient-to-r from-teal-400 to-teal-500 text-teal-950 shadow-lg"
-                      : "text-white/60 hover:text-white hover:bg-white/5"
+                      : "text-primary/65 hover:text-primary hover:bg-white/5"
                   }`}
                 >
                   Subclass 491
@@ -431,12 +431,12 @@ export default function StateSponsorshipPage() {
                 >
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
                     <div className="bg-white/5 rounded-2xl p-5 border border-white/5">
-                      <p className="text-xs font-semibold text-white/40 uppercase tracking-wider mb-2">Program Status</p>
+                      <p className="text-xs font-semibold text-primary/50 uppercase tracking-wider mb-2">Program Status</p>
                       <StatusBadge status={currentCriteria.status} />
                     </div>
                     <div className="bg-white/5 rounded-2xl p-5 border border-white/5">
-                      <p className="text-xs font-semibold text-white/40 uppercase tracking-wider mb-2">Typical Points</p>
-                      <p className="text-lg font-bold text-white">{currentCriteria.minPoints}</p>
+                      <p className="text-xs font-semibold text-primary/50 uppercase tracking-wider mb-2">Typical Points</p>
+                      <p className="text-lg font-bold text-primary">{currentCriteria.minPoints}</p>
                     </div>
                   </div>
 
@@ -447,7 +447,7 @@ export default function StateSponsorshipPage() {
                     </div>
                   </div>
 
-                  <h3 className="text-xl font-bold text-white mb-6" style={{ fontFamily: "var(--font-display)" }}>
+                  <h3 className="text-xl font-bold text-primary mb-6" style={{ fontFamily: "var(--font-display)" }}>
                     Primary Nomination Pathways
                   </h3>
 
@@ -460,11 +460,11 @@ export default function StateSponsorshipPage() {
                             <div className="w-10 h-10 rounded-lg bg-white/10 flex items-center justify-center flex-shrink-0">
                               <Icon className="w-5 h-5 text-teal-300" />
                             </div>
-                            <h4 className="text-lg font-semibold text-white">{pathway.title}</h4>
+                            <h4 className="text-lg font-semibold text-primary">{pathway.title}</h4>
                           </div>
                           <ul className="space-y-3 pl-[3.25rem]">
                             {pathway.details.map((detail, dIdx) => (
-                              <li key={dIdx} className="text-sm text-white/70 relative">
+                              <li key={dIdx} className="text-sm text-primary/70 relative">
                                 <span className="absolute -left-5 top-1.5 w-1.5 h-1.5 rounded-full bg-teal-500/50" />
                                 {detail}
                               </li>
@@ -475,7 +475,7 @@ export default function StateSponsorshipPage() {
                     })}
                   </div>
                   
-                  <div className="mt-8 text-xs text-white/30 text-center">
+                  <div className="mt-8 text-xs text-primary/45 text-center">
                     Note: State criteria change frequently based on federal allocations and local skill shortages. 
                     Always consult the official state website before applying.
                   </div>

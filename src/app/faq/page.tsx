@@ -105,7 +105,7 @@ export default function FAQPage() {
   const [activeCategory, setActiveCategory] = useState(0);
 
   return (
-    <div className="pt-24 pb-16 lg:pt-32">
+    <div className="pt-24 pb-16 lg:pt-32 bg-surface">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <PageHeader
           icon={HelpCircle}
@@ -115,8 +115,8 @@ export default function FAQPage() {
             </>
           }
           description="Common questions about Australian skilled migration, points test, employer sponsorship, and visa processing."
-          headingClassName="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white mb-4"
-          descriptionClassName="text-white/50 max-w-2xl mx-auto"
+          headingClassName="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-primary mb-4"
+          descriptionClassName="text-primary/60 max-w-2xl mx-auto"
         />
 
         {/* Category tabs */}
@@ -132,8 +132,8 @@ export default function FAQPage() {
               onClick={() => setActiveCategory(i)}
               className={`px-4 py-2 rounded-xl text-sm font-medium transition-all duration-300 ${
                 activeCategory === i
-                  ? "bg-white/10 text-teal-300 border border-teal-400/20"
-                  : "bg-white/3 text-white/50 border border-white/5 hover:bg-white/5 hover:text-white"
+                  ? "bg-surface-container-high text-secondary shadow-[var(--shadow-ambient)]"
+                  : "bg-surface-container-low text-primary/65 hover:bg-surface-container-high hover:text-primary"
               }`}
             >
               {cat.name}
@@ -158,7 +158,7 @@ export default function FAQPage() {
           viewport={{ once: true }}
           className="mt-12 glass-card p-6 text-center"
         >
-          <p className="text-xs text-white/30 leading-relaxed">
+          <p className="text-xs text-primary/45 leading-relaxed">
             The information provided here is for general guidance only and may
             not reflect the most current visa requirements. Visa policies are
             subject to change by the Australian Department of Home Affairs.

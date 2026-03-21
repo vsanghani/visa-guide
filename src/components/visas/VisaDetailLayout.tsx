@@ -40,41 +40,39 @@ export default function VisaDetailLayout({
   children,
 }: VisaDetailLayoutProps) {
   return (
-    <div className="pt-24 pb-16 lg:pt-32">
+    <div className="pt-24 pb-16 lg:pt-32 bg-surface">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Back */}
         <motion.div
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
         >
           <Link
             href="/visas"
-            className="inline-flex items-center gap-2 text-sm text-white/50 hover:text-teal-300 transition-colors mb-8"
+            className="inline-flex items-center gap-2 text-sm text-primary/60 hover:text-secondary transition-colors mb-8"
           >
             <ArrowLeft className="w-4 h-4" />
             Back to All Visas
           </Link>
         </motion.div>
 
-        {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1 }}
           className="mb-10"
         >
-          <div className="flex items-center gap-3 mb-3">
+          <div className="flex flex-wrap items-center gap-3 mb-3">
             <span
-              className={`px-3 py-1 rounded-lg bg-gradient-to-r ${color} text-xs font-bold text-white`}
+              className={`px-3 py-1 rounded-lg bg-gradient-to-r ${color} text-xs font-bold text-on-primary shadow-[var(--shadow-ambient)]`}
             >
               Subclass {subclass}
             </span>
-            <span className="px-2.5 py-1 rounded-lg bg-white/5 text-xs font-medium text-white/50 border border-white/5">
+            <span className="px-2.5 py-1 rounded-full bg-surface-container-low text-xs font-medium text-primary/70 uppercase tracking-wide">
               {category}
             </span>
           </div>
           <h1
-            className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white"
+            className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-primary tracking-tight"
             style={{ fontFamily: "var(--font-display)" }}
           >
             {title}
@@ -82,9 +80,7 @@ export default function VisaDetailLayout({
         </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {/* Main content */}
           <div className="lg:col-span-2 space-y-8">
-            {/* Overview */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -92,18 +88,17 @@ export default function VisaDetailLayout({
               className="glass-card p-6"
             >
               <h2
-                className="text-lg font-bold text-white mb-4 flex items-center gap-2"
+                className="text-lg font-bold text-primary mb-4 flex items-center gap-2"
                 style={{ fontFamily: "var(--font-display)" }}
               >
-                <FileText className="w-5 h-5 text-teal-400" />
+                <FileText className="w-5 h-5 text-secondary" />
                 Overview
               </h2>
-              <p className="text-sm text-white/60 leading-relaxed">
+              <p className="text-sm text-primary/70 leading-relaxed">
                 {overview}
               </p>
             </motion.div>
 
-            {/* Eligibility */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -111,26 +106,25 @@ export default function VisaDetailLayout({
               className="glass-card p-6"
             >
               <h2
-                className="text-lg font-bold text-white mb-4 flex items-center gap-2"
+                className="text-lg font-bold text-primary mb-4 flex items-center gap-2"
                 style={{ fontFamily: "var(--font-display)" }}
               >
-                <CheckCircle className="w-5 h-5 text-teal-400" />
+                <CheckCircle className="w-5 h-5 text-secondary" />
                 Eligibility Requirements
               </h2>
               <ul className="space-y-3">
                 {eligibility.map((item, i) => (
                   <li
                     key={i}
-                    className="text-sm text-white/60 flex items-start gap-3"
+                    className="text-sm text-primary/70 flex items-start gap-3"
                   >
-                    <span className="w-1.5 h-1.5 rounded-full bg-teal-400 mt-1.5 flex-shrink-0" />
+                    <span className="w-1.5 h-1.5 rounded-full bg-secondary mt-1.5 flex-shrink-0" />
                     {item}
                   </li>
                 ))}
               </ul>
             </motion.div>
 
-            {/* Application Process */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -138,7 +132,7 @@ export default function VisaDetailLayout({
               className="glass-card p-6"
             >
               <h2
-                className="text-lg font-bold text-white mb-4"
+                className="text-lg font-bold text-primary mb-4"
                 style={{ fontFamily: "var(--font-display)" }}
               >
                 Application Process
@@ -146,12 +140,12 @@ export default function VisaDetailLayout({
               <div className="space-y-4">
                 {process.map((step, i) => (
                   <div key={i} className="flex items-start gap-4">
-                    <div className="w-8 h-8 rounded-full bg-gradient-to-br from-navy-400/20 to-teal-400/20 border border-white/10 flex items-center justify-center flex-shrink-0">
-                      <span className="text-xs font-bold text-teal-400">
+                    <div className="w-8 h-8 rounded-full bg-surface-container-low flex items-center justify-center flex-shrink-0">
+                      <span className="text-xs font-bold text-secondary">
                         {i + 1}
                       </span>
                     </div>
-                    <p className="text-sm text-white/60 pt-1.5">{step}</p>
+                    <p className="text-sm text-primary/70 pt-1.5">{step}</p>
                   </div>
                 ))}
               </div>
@@ -160,9 +154,7 @@ export default function VisaDetailLayout({
             {children}
           </div>
 
-          {/* Sidebar */}
           <div className="space-y-6">
-            {/* Processing Time */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -170,20 +162,19 @@ export default function VisaDetailLayout({
               className="glass-card p-5"
             >
               <div className="flex items-center gap-2 mb-3">
-                <Clock className="w-5 h-5 text-teal-400" />
-                <h3 className="text-sm font-bold text-white">
+                <Clock className="w-5 h-5 text-secondary" />
+                <h3 className="text-sm font-bold text-primary">
                   Processing Time
                 </h3>
               </div>
               <p className="text-lg font-bold text-gradient-teal">
                 {processingTime}
               </p>
-              <p className="text-xs text-white/40 mt-1">
+              <p className="text-xs text-primary/50 mt-1">
                 Based on current DHA estimates
               </p>
             </motion.div>
 
-            {/* Costs */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -191,8 +182,8 @@ export default function VisaDetailLayout({
               className="glass-card p-5"
             >
               <div className="flex items-center gap-2 mb-3">
-                <DollarSign className="w-5 h-5 text-gold-400" />
-                <h3 className="text-sm font-bold text-white">
+                <DollarSign className="w-5 h-5 text-gold-600" />
+                <h3 className="text-sm font-bold text-primary">
                   Application Costs
                 </h3>
               </div>
@@ -200,10 +191,10 @@ export default function VisaDetailLayout({
                 {costs.map((cost) => (
                   <div
                     key={cost.item}
-                    className="flex justify-between items-center"
+                    className="flex justify-between items-center gap-2"
                   >
-                    <span className="text-xs text-white/50">{cost.item}</span>
-                    <span className="text-sm font-semibold text-white">
+                    <span className="text-xs text-primary/60">{cost.item}</span>
+                    <span className="text-sm font-semibold text-primary">
                       {cost.amount}
                     </span>
                   </div>
@@ -211,7 +202,6 @@ export default function VisaDetailLayout({
               </div>
             </motion.div>
 
-            {/* Tips */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -219,23 +209,22 @@ export default function VisaDetailLayout({
               className="glass-card p-5"
             >
               <div className="flex items-center gap-2 mb-3">
-                <AlertCircle className="w-5 h-5 text-gold-400" />
-                <h3 className="text-sm font-bold text-white">Key Tips</h3>
+                <AlertCircle className="w-5 h-5 text-gold-600" />
+                <h3 className="text-sm font-bold text-primary">Key Tips</h3>
               </div>
               <ul className="space-y-2">
                 {tips.map((tip, i) => (
                   <li
                     key={i}
-                    className="text-xs text-white/50 flex items-start gap-2"
+                    className="text-xs text-primary/65 flex items-start gap-2"
                   >
-                    <span className="w-1 h-1 rounded-full bg-gold-400 mt-1.5 flex-shrink-0" />
+                    <span className="w-1 h-1 rounded-full bg-gold-500 mt-1.5 flex-shrink-0" />
                     {tip}
                   </li>
                 ))}
               </ul>
             </motion.div>
 
-            {/* CTA */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}

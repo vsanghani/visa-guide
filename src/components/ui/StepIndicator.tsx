@@ -23,10 +23,10 @@ export default function StepIndicator({
               <motion.div
                 className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold transition-all duration-300 ${
                   isCompleted
-                    ? "bg-teal-500 text-white"
+                    ? "bg-secondary text-on-primary"
                     : isCurrent
-                      ? "bg-gradient-to-r from-navy-400 to-teal-400 text-white shadow-lg shadow-teal-500/20"
-                      : "bg-white/5 text-white/30 border border-white/10"
+                      ? "bg-gradient-to-r from-primary to-primary-container text-on-primary shadow-[var(--shadow-ambient)]"
+                      : "bg-surface-container-high text-primary/40"
                 }`}
                 animate={isCurrent ? { scale: [1, 1.1, 1] } : {}}
                 transition={{ duration: 1.5, repeat: Infinity }}
@@ -36,10 +36,10 @@ export default function StepIndicator({
               <span
                 className={`text-xs hidden sm:inline font-medium ${
                   isCurrent
-                    ? "text-teal-300"
+                    ? "text-secondary"
                     : isCompleted
-                      ? "text-white/60"
-                      : "text-white/30"
+                      ? "text-primary/70"
+                      : "text-primary/40"
                 }`}
               >
                 {step}
@@ -48,7 +48,7 @@ export default function StepIndicator({
             {index < steps.length - 1 && (
               <div
                 className={`w-8 h-0.5 ${
-                  isCompleted ? "bg-teal-500/50" : "bg-white/10"
+                  isCompleted ? "bg-secondary/40" : "bg-surface-container-high"
                 }`}
               />
             )}

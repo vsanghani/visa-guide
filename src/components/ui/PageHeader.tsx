@@ -8,7 +8,6 @@ type PageHeaderProps = {
   title: ReactNode;
   description?: ReactNode;
   icon?: LucideIcon;
-  /** Full class for the icon container (gradient, size, shadow). */
   iconWrapperClassName?: string;
   headingClassName?: string;
   descriptionClassName?: string;
@@ -16,12 +15,12 @@ type PageHeaderProps = {
 };
 
 const defaultIconWrapper =
-  "w-14 h-14 rounded-2xl bg-gradient-to-br from-navy-400 to-teal-400 flex items-center justify-center mx-auto mb-5";
+  "w-14 h-14 rounded-xl bg-gradient-to-br from-primary to-primary-container flex items-center justify-center mx-auto mb-5 shadow-[var(--shadow-ambient)]";
 
 const defaultHeading =
-  "text-3xl sm:text-4xl font-extrabold text-white mb-3";
+  "text-3xl sm:text-4xl font-extrabold text-primary mb-3 tracking-tight";
 
-const defaultDescription = "text-white/50 max-w-2xl mx-auto";
+const defaultDescription = "text-primary/65 max-w-2xl mx-auto text-base leading-relaxed";
 
 export default function PageHeader({
   title,
@@ -40,13 +39,10 @@ export default function PageHeader({
     >
       {Icon && (
         <div className={iconWrapperClassName ?? defaultIconWrapper}>
-          <Icon className="w-7 h-7 text-white" />
+          <Icon className="w-7 h-7 text-on-primary" />
         </div>
       )}
-      <h1
-        className={headingClassName}
-        style={{ fontFamily: "var(--font-display)" }}
-      >
+      <h1 className={headingClassName} style={{ fontFamily: "var(--font-display)" }}>
         {title}
       </h1>
       {description != null && (
