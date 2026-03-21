@@ -74,19 +74,15 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 lg:h-18">
           <Link href="/" className="flex items-center gap-2.5 group shrink-0">
-            <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-navy-400 to-teal-400 flex items-center justify-center group-hover:shadow-lg group-hover:shadow-teal-500/20 transition-all duration-300">
-              <Globe className="w-5 h-5 text-white" />
+            <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-primary to-primary-container flex items-center justify-center shadow-[var(--shadow-ambient)] transition-transform group-hover:scale-[1.02]">
+              <Globe className="w-5 h-5 text-on-primary" />
             </div>
-            <span
-              className="text-xl font-bold tracking-tight"
-              style={{ fontFamily: "var(--font-display)" }}
-            >
-              <span className="text-white">Aus</span>
+            <span className="text-xl font-bold tracking-tight text-primary">
+              Aus
               <span className="text-gradient-teal">Visa</span>
             </span>
           </Link>
 
-          {/* Desktop: primary + More dropdown */}
           <div className="hidden md:flex items-center gap-1">
             {primaryLinks.map((link) => {
               const isActive = pathname === link.href;
@@ -96,14 +92,14 @@ export default function Navbar() {
                   href={link.href}
                   className={`relative px-4 py-2 rounded-xl text-sm font-medium transition-all duration-300 ${
                     isActive
-                      ? "text-teal-300"
-                      : "text-white/70 hover:text-white hover:bg-white/5"
+                      ? "text-secondary"
+                      : "text-primary/70 hover:text-primary hover:bg-surface-container-low"
                   }`}
                 >
                   {isActive && (
                     <motion.div
                       layoutId="activeTab"
-                      className="absolute inset-0 bg-white/10 rounded-xl border border-white/10"
+                      className="absolute inset-0 bg-surface-container-high/80 rounded-xl"
                       transition={{
                         type: "spring",
                         stiffness: 300,
@@ -124,14 +120,14 @@ export default function Navbar() {
                 aria-haspopup="true"
                 className={`relative flex items-center gap-1.5 px-4 py-2 rounded-xl text-sm font-medium transition-all duration-300 ${
                   moreOpen || moreActive
-                    ? "text-teal-300"
-                    : "text-white/70 hover:text-white hover:bg-white/5"
+                    ? "text-secondary"
+                    : "text-primary/70 hover:text-primary hover:bg-surface-container-low"
                 }`}
               >
                 {(moreOpen || moreActive) && (
                   <motion.div
                     layoutId="activeTabMore"
-                    className="absolute inset-0 bg-white/10 rounded-xl border border-white/10"
+                    className="absolute inset-0 bg-surface-container-high/80 rounded-xl"
                     transition={{
                       type: "spring",
                       stiffness: 300,
@@ -154,7 +150,7 @@ export default function Navbar() {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -6 }}
                     transition={{ duration: 0.15 }}
-                    className="absolute right-0 top-full mt-2 min-w-[14rem] py-2 rounded-xl border border-white/10 bg-navy-950/95 backdrop-blur-xl shadow-xl shadow-black/40 z-50"
+                    className="absolute right-0 top-full mt-2 min-w-[14rem] py-2 rounded-xl bg-surface-container-lowest shadow-[var(--shadow-ambient)] z-50"
                     role="menu"
                   >
                     {moreLinks.map((link) => {
@@ -168,8 +164,8 @@ export default function Navbar() {
                           onClick={() => setMoreOpen(false)}
                           className={`flex items-center gap-3 px-4 py-2.5 text-sm transition-colors ${
                             isActive
-                              ? "bg-white/10 text-teal-300"
-                              : "text-white/80 hover:bg-white/5 hover:text-white"
+                              ? "bg-surface-container-low text-secondary font-medium"
+                              : "text-primary/80 hover:bg-surface-container-low"
                           }`}
                         >
                           <Icon className="w-4 h-4 shrink-0 opacity-80" />
@@ -186,7 +182,7 @@ export default function Navbar() {
           <button
             type="button"
             onClick={() => setMobileOpen((o) => !o)}
-            className="md:hidden p-2 rounded-xl text-white/70 hover:text-white hover:bg-white/5 transition-colors"
+            className="md:hidden p-2 rounded-xl text-primary/70 hover:text-primary hover:bg-surface-container-low transition-colors"
             aria-label="Toggle menu"
             aria-expanded={mobileOpen}
           >
@@ -202,7 +198,7 @@ export default function Navbar() {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3 }}
-            className="md:hidden overflow-hidden border-t border-white/5"
+            className="md:hidden overflow-hidden bg-surface-container-lowest/95 backdrop-blur-md"
           >
             <div className="px-4 pb-4 pt-3 space-y-1 max-h-[min(70vh,calc(100dvh-4rem))] overflow-y-auto">
               {primaryLinks.map((link) => {
@@ -215,8 +211,8 @@ export default function Navbar() {
                     onClick={() => setMobileOpen(false)}
                     className={`flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-all ${
                       isActive
-                        ? "bg-white/10 text-teal-300"
-                        : "text-white/70 hover:bg-white/5 hover:text-white"
+                        ? "bg-surface-container-low text-secondary"
+                        : "text-primary/75 hover:bg-surface-container-low"
                     }`}
                   >
                     <Icon className="w-5 h-5 shrink-0" />
@@ -226,7 +222,7 @@ export default function Navbar() {
               })}
 
               <div className="pt-3 pb-1">
-                <p className="px-4 text-[11px] font-semibold uppercase tracking-wider text-white/35">
+                <p className="px-4 text-[11px] font-semibold uppercase tracking-wider text-primary/40">
                   {"Tools & resources"}
                 </p>
               </div>
@@ -241,8 +237,8 @@ export default function Navbar() {
                     onClick={() => setMobileOpen(false)}
                     className={`flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-all ${
                       isActive
-                        ? "bg-white/10 text-teal-300"
-                        : "text-white/70 hover:bg-white/5 hover:text-white"
+                        ? "bg-surface-container-low text-secondary"
+                        : "text-primary/75 hover:bg-surface-container-low"
                     }`}
                   >
                     <Icon className="w-5 h-5 shrink-0" />

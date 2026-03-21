@@ -26,7 +26,7 @@ export default function Accordion({ items }: AccordionProps) {
               onClick={() => setOpenIndex(isOpen ? null : index)}
               className="w-full flex items-center justify-between p-5 text-left"
             >
-              <span className="text-sm sm:text-base font-medium text-white pr-4">
+              <span className="text-sm sm:text-base font-medium text-primary pr-4">
                 {item.question}
               </span>
               <motion.div
@@ -34,7 +34,7 @@ export default function Accordion({ items }: AccordionProps) {
                 transition={{ duration: 0.3 }}
                 className="flex-shrink-0"
               >
-                <ChevronDown className="w-5 h-5 text-teal-400" />
+                <ChevronDown className="w-5 h-5 text-secondary" />
               </motion.div>
             </button>
             <AnimatePresence>
@@ -45,7 +45,7 @@ export default function Accordion({ items }: AccordionProps) {
                   exit={{ height: 0, opacity: 0 }}
                   transition={{ duration: 0.3 }}
                 >
-                  <div className="px-5 pb-5 text-sm text-white/60 leading-relaxed border-t border-white/5 pt-4">
+                  <div className="px-5 pb-5 text-sm text-primary/70 leading-relaxed pt-4 bg-surface-container-low/50">
                     {item.answer}
                   </div>
                 </motion.div>

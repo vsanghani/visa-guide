@@ -122,8 +122,8 @@ export default function PathwaysPage() {
             </>
           }
           description="Explore common temporary-to-permanent pathways for migrating to Australia. Find the route that best matches your situation."
-          headingClassName="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white mb-4"
-          descriptionClassName="text-white/50 max-w-2xl mx-auto text-lg"
+          headingClassName="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-primary mb-4"
+          descriptionClassName="text-primary/60 max-w-2xl mx-auto text-lg"
           className="text-center mb-12"
         />
 
@@ -140,16 +140,16 @@ export default function PathwaysPage() {
                     <div
                       className={`w-12 h-12 rounded-2xl bg-gradient-to-br ${pathway.color} flex items-center justify-center flex-shrink-0`}
                     >
-                      <Icon className="w-6 h-6 text-white" />
+                      <Icon className="w-6 h-6 text-primary" />
                     </div>
                     <div>
                       <h2
-                        className="text-lg sm:text-xl font-bold text-white"
+                        className="text-lg sm:text-xl font-bold text-primary"
                         style={{ fontFamily: "var(--font-display)" }}
                       >
                         {pathway.title}
                       </h2>
-                      <p className="text-sm text-white/50">{pathway.subtitle}</p>
+                      <p className="text-sm text-primary/60">{pathway.subtitle}</p>
                       <div className="flex items-center gap-2 mt-2">
                         <Clock className="w-3.5 h-3.5 text-teal-400" />
                         <span className="text-xs text-teal-400">
@@ -161,7 +161,7 @@ export default function PathwaysPage() {
 
                   {/* Timeline */}
                   <div className="mb-6">
-                    <h3 className="text-sm font-semibold text-white mb-4">
+                    <h3 className="text-sm font-semibold text-primary mb-4">
                       Step-by-Step Process
                     </h3>
                     <div className="space-y-3">
@@ -177,7 +177,7 @@ export default function PathwaysPage() {
                               <div className="w-px h-4 bg-white/10 mt-1" />
                             )}
                           </div>
-                          <p className="text-sm text-white/60 pt-1">{step}</p>
+                          <p className="text-sm text-primary/65 pt-1">{step}</p>
                         </div>
                       ))}
                     </div>
@@ -192,7 +192,7 @@ export default function PathwaysPage() {
                       {pathway.tips.map((tip, j) => (
                         <li
                           key={j}
-                          className="text-xs text-white/40 flex items-start gap-2"
+                          className="text-xs text-primary/50 flex items-start gap-2"
                         >
                           <span className="w-1 h-1 rounded-full bg-gold-400 mt-1.5 flex-shrink-0" />
                           {tip}

@@ -9,8 +9,6 @@ import {
   Briefcase,
   ArrowRightLeft,
   Calculator,
-  CheckCircle,
-  Clock,
   Target,
   Sparkles,
   MapPin,
@@ -23,7 +21,7 @@ const visaCategories = [
     description:
       "Points-tested visas for skilled workers — subclass 189, 190, and 491",
     icon: Target,
-    color: "from-navy-400 to-navy-600",
+    color: "from-primary to-primary-container",
     href: "/visas",
     badges: ["189", "190", "491"],
   },
@@ -32,7 +30,7 @@ const visaCategories = [
     description:
       "Visas sponsored by Australian employers — subclass 482 and 186",
     icon: Briefcase,
-    color: "from-teal-400 to-teal-600",
+    color: "from-secondary to-primary-container",
     href: "/visas",
     badges: ["482", "186"],
   },
@@ -41,7 +39,7 @@ const visaCategories = [
     description:
       "Pathways from temporary visas to permanent residency in Australia",
     icon: ArrowRightLeft,
-    color: "from-gold-400 to-gold-600",
+    color: "from-primary-container to-secondary",
     href: "/pathways",
     badges: ["482→186", "491→191"],
   },
@@ -93,12 +91,14 @@ const features = [
   },
   {
     title: "Document Checklist",
-    description: "Generate a tailored list of documents required for your specific visa and personal circumstances.",
+    description:
+      "Generate a tailored list of documents required for your specific visa and personal circumstances.",
     icon: FileText,
   },
   {
     title: "Regional Postcode Checker",
-    description: "Instantly check if an Australian postcode is in a Designated Regional Area for 491 visa eligibility.",
+    description:
+      "Instantly check if an Australian postcode is in a Designated Regional Area for 491 visa eligibility.",
     icon: MapPin,
   },
   {
@@ -126,22 +126,21 @@ export default function HomePage() {
     <>
       <Hero />
 
-      {/* Visa Categories */}
-      <section className="py-16 lg:py-24">
+      <section className="py-16 lg:py-24 bg-surface">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-center mb-12"
+            className="text-center mb-12 lg:text-left lg:pl-4 lg:pr-20"
           >
             <h2
-              className="text-3xl sm:text-4xl font-bold text-white mb-4"
+              className="text-3xl sm:text-4xl font-bold text-primary mb-4 tracking-tight"
               style={{ fontFamily: "var(--font-display)" }}
             >
               Explore Visa Categories
             </h2>
-            <p className="text-white/50 max-w-2xl mx-auto">
+            <p className="text-primary/65 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
               Australia offers multiple pathways to permanent residency. Find the
               one that suits your profile.
             </p>
@@ -154,24 +153,24 @@ export default function HomePage() {
                 <GlassCard key={cat.title} delay={i * 0.1}>
                   <Link href={cat.href} className="block">
                     <div
-                      className={`w-12 h-12 rounded-2xl bg-gradient-to-br ${cat.color} flex items-center justify-center mb-5`}
+                      className={`w-12 h-12 rounded-xl bg-gradient-to-br ${cat.color} flex items-center justify-center mb-5 shadow-[var(--shadow-ambient)]`}
                     >
-                      <Icon className="w-6 h-6 text-white" />
+                      <Icon className="w-6 h-6 text-on-primary" />
                     </div>
                     <h3
-                      className="text-lg font-bold text-white mb-2"
+                      className="text-lg font-bold text-primary mb-2 tracking-tight"
                       style={{ fontFamily: "var(--font-display)" }}
                     >
                       {cat.title}
                     </h3>
-                    <p className="text-sm text-white/50 mb-4 leading-relaxed">
+                    <p className="text-sm text-primary/65 mb-4 leading-relaxed">
                       {cat.description}
                     </p>
                     <div className="flex gap-2 flex-wrap">
                       {cat.badges.map((badge) => (
                         <span
                           key={badge}
-                          className="px-2.5 py-1 rounded-lg bg-white/5 text-xs font-medium text-teal-300 border border-white/5"
+                          className="px-2.5 py-1 rounded-full bg-surface-container-low text-xs font-medium text-primary uppercase tracking-wide"
                         >
                           {badge}
                         </span>
@@ -185,10 +184,8 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* How It Works */}
-      <section className="py-16 lg:py-24 relative">
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-navy-950/50 to-transparent" />
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+      <section className="py-16 lg:py-24 bg-surface-container-low">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -196,12 +193,12 @@ export default function HomePage() {
             className="text-center mb-12"
           >
             <h2
-              className="text-3xl sm:text-4xl font-bold text-white mb-4"
+              className="text-3xl sm:text-4xl font-bold text-primary mb-4 tracking-tight"
               style={{ fontFamily: "var(--font-display)" }}
             >
               How It Works
             </h2>
-            <p className="text-white/50 max-w-2xl mx-auto">
+            <p className="text-primary/65 max-w-2xl mx-auto leading-relaxed">
               Four simple steps to understand your Australian migration options.
             </p>
           </motion.div>
@@ -212,18 +209,21 @@ export default function HomePage() {
               return (
                 <GlassCard key={step.number} delay={i * 0.1}>
                   <div className="flex items-start gap-4">
-                    <span className="text-3xl font-black text-white/10" style={{ fontFamily: "var(--font-display)" }}>
+                    <span
+                      className="text-3xl font-black text-primary/[0.08]"
+                      style={{ fontFamily: "var(--font-display)" }}
+                    >
                       {step.number}
                     </span>
-                    <Icon className="w-5 h-5 text-teal-400 mt-2 flex-shrink-0" />
+                    <Icon className="w-5 h-5 text-secondary mt-2 flex-shrink-0" />
                   </div>
                   <h3
-                    className="text-base font-bold text-white mt-4 mb-2"
+                    className="text-base font-bold text-primary mt-4 mb-2"
                     style={{ fontFamily: "var(--font-display)" }}
                   >
                     {step.title}
                   </h3>
-                  <p className="text-sm text-white/50 leading-relaxed">
+                  <p className="text-sm text-primary/65 leading-relaxed">
                     {step.description}
                   </p>
                 </GlassCard>
@@ -233,8 +233,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Features */}
-      <section className="py-16 lg:py-24">
+      <section className="py-16 lg:py-24 bg-surface">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -243,7 +242,7 @@ export default function HomePage() {
             className="text-center mb-12"
           >
             <h2
-              className="text-3xl sm:text-4xl font-bold text-white mb-4"
+              className="text-3xl sm:text-4xl font-bold text-primary mb-4 tracking-tight"
               style={{ fontFamily: "var(--font-display)" }}
             >
               Why Use AusVisa Guide?
@@ -256,17 +255,17 @@ export default function HomePage() {
               return (
                 <GlassCard key={feature.title} delay={i * 0.1}>
                   <div className="flex items-start gap-4">
-                    <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-teal-400/20 to-navy-400/20 flex items-center justify-center flex-shrink-0">
-                      <Icon className="w-5 h-5 text-teal-400" />
+                    <div className="w-10 h-10 rounded-xl bg-surface-container-low flex items-center justify-center flex-shrink-0">
+                      <Icon className="w-5 h-5 text-secondary" />
                     </div>
                     <div>
                       <h3
-                        className="text-base font-bold text-white mb-1"
+                        className="text-base font-bold text-primary mb-1"
                         style={{ fontFamily: "var(--font-display)" }}
                       >
                         {feature.title}
                       </h3>
-                      <p className="text-sm text-white/50 leading-relaxed">
+                      <p className="text-sm text-primary/65 leading-relaxed">
                         {feature.description}
                       </p>
                     </div>
@@ -278,24 +277,23 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-16 lg:py-24">
+      <section className="py-16 lg:py-24 bg-surface-container-low">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="glass-card p-8 sm:p-12 text-center relative overflow-hidden"
+            className="hero-gradient rounded-2xl p-8 sm:p-12 text-center relative overflow-hidden shadow-[var(--shadow-ambient)]"
           >
-            <div className="absolute inset-0 bg-gradient-to-br from-navy-500/10 to-teal-500/10" />
-            <div className="relative">
+            <div className="absolute inset-0 bg-white/[0.03] pointer-events-none" />
+            <div className="relative text-on-primary">
               <h2
-                className="text-2xl sm:text-3xl font-bold text-white mb-4"
+                className="text-2xl sm:text-3xl font-bold mb-4 tracking-tight"
                 style={{ fontFamily: "var(--font-display)" }}
               >
                 Ready to Check Your Eligibility?
               </h2>
-              <p className="text-white/50 max-w-xl mx-auto mb-8">
+              <p className="text-white/80 max-w-xl mx-auto mb-8 leading-relaxed">
                 Use our free points calculator to instantly find out if you meet
                 the minimum requirements for Australian skilled migration.
               </p>

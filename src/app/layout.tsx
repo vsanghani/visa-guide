@@ -18,8 +18,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="antialiased min-h-screen flex flex-col">
-        <div className="mesh-gradient" />
+      <body className="antialiased min-h-screen flex flex-col bg-surface text-on-surface">
+        <div className="page-bg-wash" aria-hidden />
         <Navbar />
         <main className="relative z-10 flex-1">{children}</main>
         <Footer />

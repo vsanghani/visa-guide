@@ -70,7 +70,7 @@ export default function RegionalPostcodePage() {
             </>
           }
           description='Instantly check if an Australian postcode is classified as a "Designated Regional Area" for migration purposes.'
-          descriptionClassName="text-white/50 max-w-xl mx-auto"
+          descriptionClassName="text-primary/60 max-w-xl mx-auto"
           className="text-center mb-12"
         />
 
@@ -81,7 +81,7 @@ export default function RegionalPostcodePage() {
           transition={{ delay: 0.1 }}
           className="glass-card p-6 sm:p-8 mb-8"
         >
-          <label className="block text-sm font-medium text-white/70 mb-3">
+          <label className="block text-sm font-medium text-primary/70 mb-3">
             Enter an Australian Postcode
           </label>
           <div className="flex gap-3">
@@ -101,9 +101,9 @@ export default function RegionalPostcodePage() {
                   }
                 }}
                 onKeyDown={handleKeyDown}
-                className="w-full px-4 py-3.5 rounded-xl border border-white/10 bg-white/5 text-white text-lg font-mono tracking-widest placeholder-white/20 focus:outline-none focus:ring-2 focus:ring-teal-400/40 focus:border-teal-400/30 transition-all"
+                className="w-full px-4 py-3.5 rounded-xl border border-white/10 bg-white/5 text-primary text-lg font-mono tracking-widest placeholder-white/20 focus:outline-none focus:ring-2 focus:ring-teal-400/40 focus:border-teal-400/30 transition-all"
               />
-              <Search className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-white/20" />
+              <Search className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-primary/35" />
             </div>
             <button
               data-testid="check-btn"
@@ -117,7 +117,7 @@ export default function RegionalPostcodePage() {
 
           {/* Quick examples */}
           <div className="mt-4 flex flex-wrap gap-2">
-            <span className="text-xs text-white/30">Try:</span>
+            <span className="text-xs text-primary/45">Try:</span>
             {examplePostcodes.map((ex) => (
               <button
                 key={ex.code}
@@ -127,7 +127,7 @@ export default function RegionalPostcodePage() {
                   setResult(null);
                   setError("");
                 }}
-                className="text-xs px-2.5 py-1 rounded-lg bg-white/5 text-white/50 hover:text-white hover:bg-white/10 transition-all border border-white/5"
+                className="text-xs px-2.5 py-1 rounded-lg bg-white/5 text-primary/60 hover:text-primary hover:bg-white/10 transition-all border border-white/5"
               >
                 {ex.code} ({ex.label})
               </button>
@@ -177,16 +177,16 @@ export default function RegionalPostcodePage() {
                     </div>
                     <div>
                       <h2
-                        className="text-2xl font-bold text-white mb-1"
+                        className="text-2xl font-bold text-primary mb-1"
                         style={{ fontFamily: "var(--font-display)" }}
                       >
                         {result.category === "regional"
                           ? "✓ Regional Area"
                           : "✗ Metropolitan Area"}
                       </h2>
-                      <p className="text-white/50 text-sm">
+                      <p className="text-primary/60 text-sm">
                         Postcode{" "}
-                        <span className="font-mono font-bold text-white">
+                        <span className="font-mono font-bold text-primary">
                           {result.postcode}
                         </span>{" "}
                         — {result.state}
@@ -197,8 +197,8 @@ export default function RegionalPostcodePage() {
                   {/* Details */}
                   {result.notes && (
                     <div className="flex items-start gap-3 p-4 rounded-xl bg-white/5 border border-white/5 mb-6">
-                      <Info className="w-5 h-5 text-white/40 mt-0.5 flex-shrink-0" />
-                      <p className="text-sm text-white/70 leading-relaxed">
+                      <Info className="w-5 h-5 text-primary/50 mt-0.5 flex-shrink-0" />
+                      <p className="text-sm text-primary/70 leading-relaxed">
                         {result.notes}
                       </p>
                     </div>
@@ -207,46 +207,46 @@ export default function RegionalPostcodePage() {
                   {/* What this means */}
                   <div>
                     <h3
-                      className="text-sm font-bold text-white/80 mb-3 uppercase tracking-wider"
+                      className="text-sm font-bold text-primary/75 mb-3 uppercase tracking-wider"
                       style={{ fontFamily: "var(--font-display)" }}
                     >
                       What this means for you
                     </h3>
                     {result.category === "regional" ? (
                       <ul className="space-y-2">
-                        <li className="flex items-start gap-2 text-sm text-white/60">
+                        <li className="flex items-start gap-2 text-sm text-primary/65">
                           <CheckCircle className="w-4 h-4 text-emerald-400 mt-0.5 flex-shrink-0" />
                           <span>
                             Eligible location for the{" "}
-                            <strong className="text-white">
+                            <strong className="text-primary">
                               Subclass 491 (Skilled Work Regional)
                             </strong>{" "}
                             visa.
                           </span>
                         </li>
-                        <li className="flex items-start gap-2 text-sm text-white/60">
+                        <li className="flex items-start gap-2 text-sm text-primary/65">
                           <CheckCircle className="w-4 h-4 text-emerald-400 mt-0.5 flex-shrink-0" />
                           <span>
                             May qualify for{" "}
-                            <strong className="text-white">
+                            <strong className="text-primary">
                               5 extra points
                             </strong>{" "}
                             for Australian regional study.
                           </span>
                         </li>
-                        <li className="flex items-start gap-2 text-sm text-white/60">
+                        <li className="flex items-start gap-2 text-sm text-primary/65">
                           <CheckCircle className="w-4 h-4 text-emerald-400 mt-0.5 flex-shrink-0" />
                           <span>
                             Eligible for regional state/territory nomination
                             streams.
                           </span>
                         </li>
-                        <li className="flex items-start gap-2 text-sm text-white/60">
+                        <li className="flex items-start gap-2 text-sm text-primary/65">
                           <CheckCircle className="w-4 h-4 text-emerald-400 mt-0.5 flex-shrink-0" />
                           <span>
                             After 3 years on a 491 visa living and working here,
                             you can apply for{" "}
-                            <strong className="text-white">
+                            <strong className="text-primary">
                               Subclass 191 Permanent Residence
                             </strong>
                             .
@@ -255,29 +255,29 @@ export default function RegionalPostcodePage() {
                       </ul>
                     ) : (
                       <ul className="space-y-2">
-                        <li className="flex items-start gap-2 text-sm text-white/60">
+                        <li className="flex items-start gap-2 text-sm text-primary/65">
                           <XCircle className="w-4 h-4 text-amber-400 mt-0.5 flex-shrink-0" />
                           <span>
-                            <strong className="text-white">Not eligible</strong>{" "}
+                            <strong className="text-primary">Not eligible</strong>{" "}
                             as a regional location for the Subclass 491 visa.
                           </span>
                         </li>
-                        <li className="flex items-start gap-2 text-sm text-white/60">
+                        <li className="flex items-start gap-2 text-sm text-primary/65">
                           <CheckCircle className="w-4 h-4 text-teal-400 mt-0.5 flex-shrink-0" />
                           <span>
                             Still eligible for{" "}
-                            <strong className="text-white">
+                            <strong className="text-primary">
                               Subclass 189
                             </strong>{" "}
                             and{" "}
-                            <strong className="text-white">
+                            <strong className="text-primary">
                               Subclass 190
                             </strong>{" "}
                             visas (location-independent).
                           </span>
                         </li>
-                        <li className="flex items-start gap-2 text-sm text-white/60">
-                          <Info className="w-4 h-4 text-white/30 mt-0.5 flex-shrink-0" />
+                        <li className="flex items-start gap-2 text-sm text-primary/65">
+                          <Info className="w-4 h-4 text-primary/45 mt-0.5 flex-shrink-0" />
                           <span>
                             Consider relocating to a regional area for access to
                             more visa pathways and state nominations.
@@ -297,7 +297,7 @@ export default function RegionalPostcodePage() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.3 }}
-          className="mt-8 text-center text-xs text-white/30"
+          className="mt-8 text-center text-xs text-primary/45"
         >
           Regional classifications are based on the Department of Home Affairs
           (DHA) Designated Regional Areas instrument. Boundaries may change with

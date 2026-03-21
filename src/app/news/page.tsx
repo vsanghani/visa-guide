@@ -40,7 +40,7 @@ export default function NewsPage() {
             </>
           }
           description="Stay up to date with the latest Australian immigration policy changes, invitation rounds, and state nomination updates."
-          descriptionClassName="text-white/50 max-w-xl mx-auto"
+          descriptionClassName="text-primary/60 max-w-xl mx-auto"
           className="text-center mb-12"
         />
 
@@ -54,8 +54,8 @@ export default function NewsPage() {
           <button
             onClick={() => setActiveCategory("All")}
             className={`px-4 py-2 rounded-xl text-sm font-medium transition-all border ${activeCategory === "All"
-                ? "bg-white/10 text-white border-white/20"
-                : "bg-white/5 text-white/40 border-white/5 hover:text-white/70 hover:bg-white/8"
+                ? "bg-white/10 text-primary border-white/20"
+                : "bg-white/5 text-primary/50 border-white/5 hover:text-primary/70 hover:bg-white/8"
               }`}
           >
             All
@@ -65,8 +65,8 @@ export default function NewsPage() {
               key={cat}
               onClick={() => setActiveCategory(cat)}
               className={`px-4 py-2 rounded-xl text-sm font-medium transition-all border ${activeCategory === cat
-                  ? "bg-white/10 text-white border-white/20"
-                  : "bg-white/5 text-white/40 border-white/5 hover:text-white/70 hover:bg-white/8"
+                  ? "bg-white/10 text-primary border-white/20"
+                  : "bg-white/5 text-primary/50 border-white/5 hover:text-primary/70 hover:bg-white/8"
                 }`}
             >
               {cat}
@@ -88,13 +88,13 @@ export default function NewsPage() {
                   {/* Category badge & date */}
                   <div className="flex items-center justify-between mb-4">
                     <span
-                      className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-semibold text-white bg-gradient-to-r ${CATEGORY_COLORS[post.category]
+                      className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-semibold text-primary bg-gradient-to-r ${CATEGORY_COLORS[post.category]
                         }`}
                     >
                       <Tag className="w-3 h-3" />
                       {post.category}
                     </span>
-                    <span className="text-xs text-white/30">
+                    <span className="text-xs text-primary/45">
                       {new Date(post.date).toLocaleDateString("en-AU", {
                         day: "numeric",
                         month: "short",
@@ -105,20 +105,20 @@ export default function NewsPage() {
 
                   {/* Title */}
                   <h2
-                    className="text-lg font-bold text-white mb-2 group-hover:text-teal-300 transition-colors line-clamp-2"
+                    className="text-lg font-bold text-primary mb-2 group-hover:text-teal-300 transition-colors line-clamp-2"
                     style={{ fontFamily: "var(--font-display)" }}
                   >
                     {post.title}
                   </h2>
 
                   {/* Excerpt */}
-                  <p className="text-sm text-white/50 mb-4 line-clamp-3 flex-1">
+                  <p className="text-sm text-primary/60 mb-4 line-clamp-3 flex-1">
                     {post.excerpt}
                   </p>
 
                   {/* Footer */}
                   <div className="flex items-center justify-between pt-3 border-t border-white/5">
-                    <span className="flex items-center gap-1.5 text-xs text-white/30">
+                    <span className="flex items-center gap-1.5 text-xs text-primary/45">
                       <Clock className="w-3.5 h-3.5" />
                       {post.readTime} min read
                     </span>
@@ -140,7 +140,7 @@ export default function NewsPage() {
             animate={{ opacity: 1 }}
             className="text-center py-16"
           >
-            <p className="text-white/40">
+            <p className="text-primary/50">
               No posts found in this category yet.
             </p>
           </motion.div>

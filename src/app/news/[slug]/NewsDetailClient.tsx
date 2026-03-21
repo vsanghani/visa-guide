@@ -32,7 +32,7 @@ export default function NewsDetailClient({ slug }: { slug: string }) {
   };
 
   return (
-    <div className="pt-24 pb-16 lg:pt-32 min-h-screen">
+    <div className="pt-24 pb-16 lg:pt-32 min-h-screen bg-surface">
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Back link */}
         <motion.div
@@ -42,7 +42,7 @@ export default function NewsDetailClient({ slug }: { slug: string }) {
         >
           <Link
             href="/news"
-            className="inline-flex items-center gap-2 text-sm text-white/40 hover:text-white transition-colors"
+            className="inline-flex items-center gap-2 text-sm text-primary/50 hover:text-primary transition-colors"
           >
             <ArrowLeft className="w-4 h-4" />
             Back to News
@@ -57,7 +57,7 @@ export default function NewsDetailClient({ slug }: { slug: string }) {
         >
           {/* Category badge */}
           <span
-            className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold text-white bg-gradient-to-r ${
+            className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold text-primary bg-gradient-to-r ${
               CATEGORY_COLORS[post.category]
             } mb-4`}
           >
@@ -66,16 +66,16 @@ export default function NewsDetailClient({ slug }: { slug: string }) {
           </span>
 
           <h1
-            className="text-3xl sm:text-4xl font-extrabold text-white mb-4 leading-tight"
+            className="text-3xl sm:text-4xl font-extrabold text-primary mb-4 leading-tight"
             style={{ fontFamily: "var(--font-display)" }}
           >
             {post.title}
           </h1>
 
-          <p className="text-lg text-white/50 mb-6">{post.excerpt}</p>
+          <p className="text-lg text-primary/60 mb-6">{post.excerpt}</p>
 
           {/* Meta */}
-          <div className="flex flex-wrap items-center gap-4 text-sm text-white/30">
+          <div className="flex flex-wrap items-center gap-4 text-sm text-primary/45">
             <span className="flex items-center gap-1.5">
               <Calendar className="w-4 h-4" />
               {new Date(post.date).toLocaleDateString("en-AU", {
@@ -90,7 +90,7 @@ export default function NewsDetailClient({ slug }: { slug: string }) {
             </span>
             <button
               onClick={handleShare}
-              className="flex items-center gap-1.5 hover:text-white transition-colors ml-auto"
+              className="flex items-center gap-1.5 hover:text-primary transition-colors ml-auto"
               aria-label="Share article"
             >
               <Share2 className="w-4 h-4" />
@@ -116,7 +116,7 @@ export default function NewsDetailClient({ slug }: { slug: string }) {
               return (
                 <div key={i}>
                   {intro && (
-                    <p className="text-white/70 leading-relaxed mb-3">
+                    <p className="text-primary/70 leading-relaxed mb-3">
                       {intro}
                     </p>
                   )}
@@ -124,7 +124,7 @@ export default function NewsDetailClient({ slug }: { slug: string }) {
                     {bullets.map((bullet, j) => (
                       <li
                         key={j}
-                        className="flex items-start gap-2 text-white/60 text-sm"
+                        className="flex items-start gap-2 text-primary/65 text-sm"
                       >
                         <span className="text-teal-400 mt-0.5">•</span>
                         <span>{bullet.replace(/^• ?/, "")}</span>
@@ -136,7 +136,7 @@ export default function NewsDetailClient({ slug }: { slug: string }) {
             }
 
             return (
-              <p key={i} className="text-white/70 leading-relaxed">
+              <p key={i} className="text-primary/70 leading-relaxed">
                 {paragraph}
               </p>
             );
@@ -148,13 +148,13 @@ export default function NewsDetailClient({ slug }: { slug: string }) {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.2 }}
-          className="mt-10 pt-8 border-t border-white/5"
+          className="mt-10 pt-8 rounded-xl bg-surface-container-low px-4 py-6 -mx-1 sm:mx-0"
         >
           <div className="flex flex-wrap gap-2">
             {post.tags.map((tag) => (
               <span
                 key={tag}
-                className="px-3 py-1 rounded-lg text-xs bg-white/5 text-white/40 border border-white/5"
+                className="px-3 py-1 rounded-full text-xs bg-surface-container-high text-primary/60"
               >
                 {tag}
               </span>

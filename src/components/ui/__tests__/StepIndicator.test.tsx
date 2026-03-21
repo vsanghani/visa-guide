@@ -23,12 +23,12 @@ describe("StepIndicator", () => {
   it("highlights the current step", () => {
     render(<StepIndicator steps={steps} currentStep={2} />);
     const currentLabel = screen.getByText("Work");
-    expect(currentLabel).toHaveClass("text-teal-300");
+    expect(currentLabel).toHaveClass("text-secondary");
   });
 
   it("dims future steps", () => {
     render(<StepIndicator steps={steps} currentStep={0} />);
     const futureLabel = screen.getByText("Education");
-    expect(futureLabel).toHaveClass("text-white/30");
+    expect(futureLabel).toHaveClass("text-primary/40");
   });
 });
