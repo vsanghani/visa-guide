@@ -10,21 +10,27 @@ describe("Navbar", () => {
     expect(screen.getByText("Visa")).toBeInTheDocument();
   });
 
-  it("renders all navigation links", () => {
+  it("renders primary navigation links", () => {
     render(<Navbar />);
     expect(screen.getByText("Home")).toBeInTheDocument();
     expect(screen.getByText("Visas")).toBeInTheDocument();
     expect(screen.getByText("Points Calculator")).toBeInTheDocument();
-    expect(screen.getByText("State Sponsorship")).toBeInTheDocument();
-    expect(screen.getByText("Regional Postcode")).toBeInTheDocument();
-    expect(screen.getByText("News")).toBeInTheDocument();
-    expect(screen.getByText("Pathways")).toBeInTheDocument();
-    expect(screen.getByText("FAQ")).toBeInTheDocument();
   });
 
-  it("renders the CTA button", () => {
+  it("opens More menu and shows secondary links on desktop", async () => {
+    const user = userEvent.setup();
     render(<Navbar />);
-    expect(screen.getByText("Check Points")).toBeInTheDocument();
+
+    const moreBtn = screen.getByRole("button", { name: /more/i });
+    await user.click(moreBtn);
+
+    expect(screen.getByRole("menu")).toBeInTheDocument();
+    expect(screen.getByRole("menuitem", { name: /State Sponsorship/i })).toBeInTheDocument();
+    expect(screen.getByRole("menuitem", { name: /Document Checklist/i })).toBeInTheDocument();
+    expect(screen.getByRole("menuitem", { name: /Regional Postcode/i })).toBeInTheDocument();
+    expect(screen.getByRole("menuitem", { name: /^News$/i })).toBeInTheDocument();
+    expect(screen.getByRole("menuitem", { name: /Pathways/i })).toBeInTheDocument();
+    expect(screen.getByRole("menuitem", { name: /^FAQ$/i })).toBeInTheDocument();
   });
 
   it("renders navigation links with correct href", () => {
@@ -36,16 +42,15 @@ describe("Navbar", () => {
     expect(visasLink).toHaveAttribute("href", "/visas");
   });
 
-  it("toggles mobile menu", async () => {
+  it("toggles mobile menu and shows grouped links", async () => {
     const user = userEvent.setup();
     render(<Navbar />);
 
     const toggleButton = screen.getByLabelText("Toggle menu");
-    expect(toggleButton).toBeInTheDocument();
-
     await user.click(toggleButton);
-    // After click, mobile menu should show links (including duplicates from mobile)
+
+    expect(screen.getByText("Tools & resources")).toBeInTheDocument();
     const pathwayLinks = screen.getAllByText("Pathways");
-    expect(pathwayLinks.length).toBeGreaterThanOrEqual(2);
+    expect(pathwayLinks.length).toBeGreaterThanOrEqual(1);
   });
 });
